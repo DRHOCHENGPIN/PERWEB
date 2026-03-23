@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>輔導專案歷程回顧</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .year-tab.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+        .status-tag {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-weight: 500;
+        }
+        .status-ongoing {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        .status-completed {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-briefcase text-blue-600 text-2xl"></i>
+                    <span class="text-xl font-bold tracking-tight text-slate-800">輔導專案歷程</span>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#summary" class="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium">總覽</a>
+                    <a href="#projects" class="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium">專案詳情</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-600 py-16 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4">數位轉型與管理資訊系統輔導</h1>
+            <p class="text-blue-100 text-lg md:text-xl font-light">
+                深耕製造業與服務業多年，致力於 ERP 建置、智慧巡檢與流程優化。
+            </p>
+        </div>
+    </section>
+
+    <!-- Summary Statistics -->
+    <section id="summary" class="py-12 -mt-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-slate-500 font-medium">總輔導件數</span>
+                        <i class="fas fa-project-diagram text-blue-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold">80+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-slate-500 font-medium">製造業專案</span>
+                        <i class="fas fa-industry text-emerald-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold">40+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-slate-500 font-medium">服務業專案</span>
+                        <i class="fas fa-concierge-bell text-orange-500"></i>
+                    </div>
+                    <div class="text-3xl font-bold">40+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <main id="projects" class="max-w-7xl mx-auto px-4 py-8 mb-20">
+        
+        <!-- Year Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mb-8 justify-center" id="year-tabs">
+            <button onclick="filterYear('all')" class="year-tab active px-4 py-2 rounded-full border border-slate-300 text-sm transition-all">全部年份</button>
+            <button onclick="filterYear('115')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">115年</button>
+            <button onclick="filterYear('114')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">114年</button>
+            <button onclick="filterYear('113')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">113年</button>
+            <button onclick="filterYear('112')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">112年</button>
+            <button onclick="filterYear('111')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">111年</button>
+            <button onclick="filterYear('110')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">110年及以前</button>
+        </div>
+
+        <div id="projects-container" class="space-y-12">
+            <!-- Projects will be injected here by JS -->
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm">&copy; 2026 輔導專案歷程資料庫. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const projectData = [
+            {
+                year: "115",
+                categories: [
+                    {
+                        name: "製造業輔導專案",
+                        projects: [
+                            { client: "百達醫企業有限公司", title: "開發保健食品業管理資訊系統", status: "進行中" },
+                            { client: "寓意科技", title: "『Ragic ERP平台建置』-工程資源開發投入", status: "進行中" },
+                            { client: "紡拓會", title: "建構紡織廠ERP並導入", status: "進行中" },
+                            { client: "宏成營造股份有限公司", title: "優化PCCES系統", status: "進行中" },
+                            { client: "恩盈企業股份有限公司", title: "AI製程進度風險與智慧巡檢決策支援系統 (共同主持人)", status: "進行中" }
+                        ]
+                    },
+                    {
+                        name: "服務業輔導專案",
+                        projects: [
+                            { client: "基督教沐恩之家", title: "個案管理資訊系統", status: "進行中" },
+                            { client: "永樂屋有限公司", title: "居家修繕管理資訊系統", status: "進行中" },
+                            { client: "悠特力股份有限公司", title: "悠躍空間資訊系統維護", status: "進行中" },
+                            { client: "群上汽車有限公司", title: "財務會計整合資訊系統", status: "進行中" },
+                            { client: "晨暮系統智能家電", title: "智能家電安裝業管理資訊系統維護", status: "進行中" },
+                            { client: "杏泰食品行", title: "冷凍食品進銷存管理資訊系統", status: "" },
+                            { client: "晨暮系統智能家電", title: "開發智能家電安裝業管理資訊系統", status: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                year: "114",
+                categories: [
+                    {
+                        name: "製造業輔導專案",
+                        projects: [
+                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company IV", status: "進行中" },
+                            { client: "菲律賓某包袋廠", title: "開發製造執行資訊系統", status: "進行中" },
+                            { client: "昱鋐實業股份有限公司", title: "鋼鐵業企業資源規劃管理資訊系統維護", status: "進行中" },
+                            { client: "恩盈企業股份有限公司", title: "閥門製造業ERP維護與更新", status: "進行中" },
+                            { client: "腓利門企業有限公司", title: "防火門企業進銷存暨外派管理資訊系統建置與導入", status: "" },
+                            { client: "恩盈企業股份有限公司", title: "閥門製造業財務會計建置與導入", status: "" },
+                            { client: "仁達國際實業有限公司", title: "量身訂製ERP系統整合與開發", status: "" },
+                            { client: "中華焊接技術社", title: "開發進銷存暨焊接課程管理資訊系統", status: "" },
+                            { client: "長麒金屬工業股份有限公司", title: "量身訂製人力資源管理系統-以螺帽製造業為例", status: "" }
+                        ]
+                    },
+                    {
+                        name: "服務業輔導專案",
+                        projects: [
+                            { client: "AI賦能下智慧管院建構", title: "實務教學與設備升級創新計劃", status: "進行中" },
+                            { client: "羅以精實數位轉型股份有限公司", title: "企業精實數位資訊系統輔導與開發", status: "進行中" },
+                            { client: "万十科技股份有限公司", title: "企業精實數位資訊系統輔導與開發", status: "進行中" },
+                            { client: "明心地產有限公司", title: "現有Ragic系統優化", status: "" },
+                            { client: "久昌汽車材料行", title: "建置汽車材料行進銷存資訊系統", status: "" },
+                            { client: "璇遠室內裝修工程有限公司", title: "工程業採購與庫存系統開發", status: "" },
+                            { client: "愛爬山旅行社有限公司", title: "內部整合管理資訊系統", status: "" },
+                            { client: "帝穎軟裝股份有限公司", title: "建立設計家具業進銷存管理資訊系統", status: "" },
+                            { client: "社團法人高雄市慈善團體聯合總會", title: "開發捐款管理資訊系統", status: "" },
+                            { client: "賢福管理顧問有限公司", title: "客戶關係管理資訊系統開發", status: "" },
+                            { client: "科學月刊", title: "月刊讀者管理資訊系統", status: "" },
+                            { client: "畯宸企業社", title: "冷氣行進銷存管理資訊系統", status: "" },
+                            { client: "大銓科技有限公司", title: "冷氣行進銷存管理資訊系統", status: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                year: "113",
+                categories: [
+                    {
+                        name: "製造業輔導專案",
+                        projects: [
+                            { client: "恩盈企業股份有限公司", title: "閥門製造業進銷存系統開發及導入", status: "" },
+                            { client: "昱鋐實業股份有限公司", title: "開發鋼鐵業企業資源規劃管理資訊系統-II", status: "" },
+                            { client: "豪逸達精密股份有限公司", title: "光電整合工程服務製造廠管理資訊系統整合暨維護", status: "" },
+                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company III", status: "" },
+                            { client: "昱鋐實業股份有限公司", title: "開發鋼鐵業企業資源規劃管理資訊系統", status: "" },
+                            { client: "豪逸達精密股份有限公司", title: "開發光電整合工程服務製造廠管理資訊系統", status: "" },
+                            { client: "萊博特克有限公司", title: "開發跨公司整合erp資訊系統", status: "" },
+                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company II", status: "" },
+                            { client: "銘崎生物科技", title: "食品廠財務、研發及樣本管理資訊系統開發及導入暨原物料追蹤系統維護", status: "" },
+                            { client: "中車科技股份有限公司", title: "開發避震器製造廠庫存管理資訊系統", status: "" },
+                            { client: "巧奇創通有限公司", title: "開發同軸連接器客戶關係管理資訊系統", status: "" }
+                        ]
+                    },
+                    {
+                        name: "服務業輔導專案",
+                        projects: [
+                            { client: "優特力股份有限公司", title: "開發健身房學員管理資訊系統", status: "" },
+                            { client: "晟邑股份有限公司", title: "開發1對1健身房教練管理資訊系統", status: "" },
+                            { client: "晨汐股份有限公司", title: "開發健身房財務管理資訊系統", status: "" },
+                            { client: "民永和股份有限公司", title: "開發健身房教練管理資訊系統", status: "" },
+                            { client: "唐盛資源整合顧問有限公司", title: "多企業ERP資訊系統開發", status: "" },
+                            { client: "數位發展部「數據啟航」", title: "NPO數據資訊能量與惜福共好平台—屏東食物銀行為例 (協同主持人)", status: "" },
+                            { client: "高雄慈善總會", title: "志工及個案管理資訊系統開發 (Pro Bono)", status: "" },
+                            { client: "愛心樹慈善會", title: "志工及個案管理資訊系統開發 (Pro Bono)", status: "" },
+                            { client: "大東門讚診所", title: "開發骨科醫院自費項目管理資訊系統", status: "" },
+                            { client: "日益冷氣行", title: "冷氣行管理資訊系統開發", status: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                year: "112",
+                categories: [
+                    {
+                        name: "製造業輔導專案",
+                        projects: [
+                            { client: "恩盈企業股份有限公司", title: "閥門製造業企業資源規劃管理資訊系統", status: "" },
+                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company", status: "" },
+                            { client: "虹光國際有限公司", title: "開發珠寶製造業企業資源規劃系統", status: "" },
+                            { client: "銘崎生物科技", title: "食品原物料追蹤系統開發", status: "" },
+                            { client: "恩盈企業股份有限公司", title: "製造專案管理資訊系統", status: "" }
+                        ]
+                    },
+                    {
+                        name: "服務業輔導專案",
+                        projects: [
+                            { client: "謝佳蓁律師事務所", title: "律師事務所資訊管理系統開發", status: "" },
+                            { client: "威寵特生物科技股份有限公司", title: "開發動物醫院聯盟會員採購資訊系統", status: "" },
+                            { client: "睿見法律事務所", title: "法律事務所律師案件管理系統開發導入暨維護", status: "" },
+                            { client: "運好管理顧問有限公司", title: "法律事務所客戶案件追蹤系統", status: "" },
+                            { client: "天旭客製化印刷", title: "專案多工提醒暨追蹤系統", status: "" },
+                            { client: "鳳商會計科", title: "鳳商學生午餐訂餐管理資訊系統", status: "" },
+                            { client: "網球場的路上", title: "網球高手陪打預約資訊系統", status: "" },
+                            { client: "深坑竹香肉粽", title: "肉粽管理資訊系統", status: "" },
+                            { client: "屏科大教職員工", title: "教職員工紓壓預約資訊系統", status: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                year: "111",
+                categories: [
+                    {
+                        name: "製造業輔導專案",
+                        projects: [
+                            { client: "基福工業股份有限公司", title: "圖文資訊管理系統", status: "" },
+                            { client: "威毅管理顧問有限公司", title: "開發盧彥勳國際網球學院管理資訊系統", status: "" },
+                            { client: "逸帆機械有限公司", title: "開發專案式生產模式製令追蹤資訊系統", status: "" },
+                            { client: "洪興研磨科技有限公司", title: "規劃砂布製造業製造現場資訊系統", status: "" },
+                            { client: "京茂機電科技股份有限公司", title: "智慧商情資料庫系統規劃", status: "" },
+                            { client: "大中華生技食品", title: "開發麵包廠訂單智慧製造管理資訊系統", status: "" },
+                            { client: "台慧股份有限公司", title: "棒球護具製造業企業資源規劃資訊系統", status: "" },
+                            { client: "台慧股份有限公司", title: "開發製令追蹤資訊系統", status: "" },
+                            { client: "大中華生技食品", title: "開發麵包廠採購暨倉儲管理資訊系統", status: "" },
+                            { client: "大中華生技食品", title: "開發麵包廠訂單管理資訊系統", status: "" },
+                            { client: "領導力科技", title: "AI智慧記帳代工廠代工記帳服務開發計畫-生產排程規劃", status: "" }
+                        ]
+                    }
+                ]
+            },
+            {
+                year: "110",
+                categories: [
+                    {
+                        name: "110年(含110年)以前輔導專案",
+                        projects: [
+                            { client: "南發木器", title: "規劃家具加工業現場管理資訊系統 (跨校研究開發團隊專案)", status: "" },
+                            { client: "南發木器", title: "開發嬰兒床製造業管理資訊系統 (經濟部工業局即時技術輔導)", status: "" },
+                            { client: "海昱國際", title: "開發鷹架製造業生產管理資訊系統 (經濟部工業局即時技術輔導)", status: "" },
+                            { client: "海昱國際", title: "規劃鷹架製造業管理資訊系統 (屏科大委託研究)", status: "" },
+                            { client: "E&I Printing Co.(越南)", title: "印刷業生產管理資訊系統 (屏科大委託研究)", status: "" },
+                            { client: "永進木器廠(有情門)", title: "產銷資訊系統設計 (屏科大委託研究)", status: "" },
+                            { client: "Club Med Academy(美國)", title: "網球學校管理資訊系統", status: "" },
+                            { client: "山華企業", title: "開發成衣製造業工繳資訊系統 (屏科大委託研究)", status: "" },
+                            { client: "加高電子", title: "開發並導入巨量即時品管資訊系統", status: "" },
+                            { client: "星博電子", title: "生產力提升及電子組裝線最適人力探討 (屏科大委託研究)", status: "" },
+                            { client: "台郡科技", title: "FPC製造業現場標準工時量測與分析 (屏科大委託研究)", status: "" },
+                            { client: "台虹科技", title: "推動軟板產業人才管理知識數位學習資料庫", status: "" },
+                            { client: "能元科技", title: "電動汽車用電池製程參數優化及製造資訊及時分析", status: "" },
+                            { client: "維鋼工業", title: "製程管理E化暨提升生產力計畫", status: "" },
+                            { client: "合晶科技", title: "製造業現場改善暨標準工時量測", status: "" },
+                            { client: "柏騰科技", title: "製造業現場改善暨標準工時量測", status: "" },
+                            { client: "標時科技", title: "生產現場改善總顧問", status: "" },
+                            { client: "同喬企業", title: "製程管理E化暨提升生產力計畫", status: "" },
+                            { client: "同駿科技", title: "製程管理E化暨提升生產力計畫", status: "" }
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        function renderProjects(filter = 'all') {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+
+            projectData.forEach(yearGroup => {
+                if (filter !== 'all' && yearGroup.year !== filter) return;
+
+                const yearSection = document.createElement('div');
+                yearSection.className = 'year-section opacity-0 transition-opacity duration-500';
+                
+                let categoriesHtml = '';
+                yearGroup.categories.forEach(cat => {
+                    const icon = cat.name.includes('製造') ? 'fa-industry' : 'fa-concierge-bell';
+                    const color = cat.name.includes('製造') ? 'text-emerald-600' : 'text-orange-600';
+                    const bgColor = cat.name.includes('製造') ? 'bg-emerald-50' : 'bg-orange-50';
+
+                    let projectsList = cat.projects.map(p => `
+                        <div class="group p-4 rounded-lg border border-slate-200 hover:border-blue-400 hover:bg-white hover:shadow-md transition-all">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-800">${p.client}</h4>
+                                    <p class="text-sm text-slate-600 mt-1">${p.title}</p>
+                                </div>
+                                ${p.status ? `<span class="status-tag ${p.status === '進行中' ? 'status-ongoing' : 'status-completed'} w-fit">${p.status}</span>` : ''}
+                            </div>
+                        </div>
+                    `).join('');
+
+                    categoriesHtml += `
+                        <div class="mb-8 last:mb-0">
+                            <div class="flex items-center space-x-2 mb-4">
+                                <div class="w-10 h-10 ${bgColor} ${color} rounded-lg flex items-center justify-center">
+                                    <i class="fas ${icon}"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-700">${cat.name}</h3>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                ${projectsList}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                yearSection.innerHTML = `
+                    <div class="flex items-baseline space-x-4 mb-6">
+                        <h2 class="text-4xl font-black text-slate-300 italic">${yearGroup.year === '110' ? '110 & Prev' : yearGroup.year + 'Y'}</h2>
+                        <div class="h-px bg-slate-200 flex-grow"></div>
+                    </div>
+                    ${categoriesHtml}
+                `;
+                
+                container.appendChild(yearSection);
+                setTimeout(() => yearSection.classList.remove('opacity-0'), 100);
+            });
+        }
+
+        function filterYear(year) {
+            // Update UI tabs
+            document.querySelectorAll('.year-tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.innerText.includes(year) || (year === 'all' && tab.innerText === '全部年份')) {
+                    tab.classList.add('active');
+                }
+            });
+            renderProjects(year);
+        }
+
+        // Initial Load
+        window.onload = () => {
+            renderProjects();
+        };
+    </script>
+</body>
+</html>
