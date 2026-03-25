@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國立屏東科技大學 產學合作中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .npust-green { color: #006d33; }
+        .bg-npust-green { background-color: #006d33; }
+        .bg-npust-green-dark { background-color: #004d24; }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 109, 51, 0.85), rgba(0, 77, 36, 0.9)), 
+                        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=2070') center/cover;
+        }
+
+        .service-card:hover, .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .duty-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .duty-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: #006d33;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 bg-npust-green text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white p-2 rounded-full">
+                        <i class="fas fa-seedling text-npust-green text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold block leading-none">NPUST</span>
+                        <span class="text-xs tracking-widest uppercase">產學合作中心</span>
+                    </div>
+                </div>
+                
+                <!-- 桌面版選單 -->
+                <div class="hidden lg:flex space-x-8 font-medium">
+                    <a href="#about" class="nav-link">關於中心</a>
+                    <a href="#services" class="nav-link">核心服務</a>
+                    <a href="#team" class="nav-link">團隊成員</a>
+                    <a href="#news" class="nav-link">最新消息</a>
+                    <a href="#contact" class="nav-link">聯絡我們</a>
+                </div>
+
+                <!-- 行動版選單按鈕 -->
+                <div class="lg:hidden">
+                    <button id="mobile-menu-btn" class="focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行動版選單內容 -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-npust-green-dark px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2">關於中心</a>
+            <a href="#services" class="block py-2">核心服務</a>
+            <a href="#team" class="block py-2">團隊成員</a>
+            <a href="#news" class="block py-2">最新消息</a>
+            <a href="#contact" class="block py-2">聯絡我們</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient h-screen flex items-center justify-center text-center text-white pt-20">
+        <div class="max-w-4xl px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">深耕農業及工業科技，引領產業創新</h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90">國立屏東科技大學產學合作中心，連結農工技術與企業需求，創造永續價值。</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#services" class="bg-white text-npust-green px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition">探索服務項目</a>
+                <a href="#contact" class="border-2 border-white px-8 py-3 rounded-full font-bold text-lg hover:bg-white hover:text-npust-green transition">立即預約諮詢</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我們 -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=2070" alt="屏科大校園風景" class="rounded-2xl shadow-2xl">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 flex items-center">
+                        <span class="w-10 h-1 bg-npust-green mr-4"></span>
+                        中心使命
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        本中心以推動「學研成果產業化」為核心，運用屏科大在熱帶農業、智慧製造、循環經濟、動物醫學及先進工藝等領域的領先地位，建構完善的農工媒合、技術移轉與創新育成機制。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-npust-green mt-1 mr-3"></i>
+                            <span>整合全校農、工、管理及民生資源，提供企業跨域技術諮詢。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-npust-green mt-1 mr-3"></i>
+                            <span>保護並推廣本校教職員工生之專利與研發成果。</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-npust-green mt-1 mr-3"></i>
+                            <span>輔導新創農工企業成長，打造區域產業群聚效應。</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 團隊成員 -->
+    <section id="team" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">團隊成員</h2>
+                <div class="w-20 h-1 bg-npust-green mx-auto mb-4"></div>
+                <p class="text-gray-600">專業、誠信、效率，我們隨時為您服務</p>
+            </div>
+
+            <!-- 主任區塊 -->
+            <div class="max-w-3xl mx-auto mb-16">
+                <div class="team-card bg-gray-50 rounded-2xl p-8 border-l-8 border-npust-green shadow-sm flex flex-col md:flex-row items-center gap-10 transition-all">
+                    <div class="relative flex-shrink-0">
+                        <img src="https://allroundsite.com/wp-content/uploads/2024/02/S__122363935.jpg" alt="何正斌主任" class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg">
+                        <div class="absolute -bottom-2 -right-2 bg-npust-green text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md">
+                            <i class="fas fa-star text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <h3 class="text-3xl font-bold text-gray-900">何正斌</h3>
+                                <p class="text-npust-green font-bold text-lg mt-1">產學合作中心 主任</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-600 mb-6">
+                            <p class="flex items-center"><i class="fas fa-phone-alt w-6 text-npust-green"></i> 聯絡電話：6284</p>
+                            <p class="flex items-center"><i class="fas fa-envelope w-6 text-npust-green"></i> <a href="mailto:cpho@mail.npust.edu.tw" class="hover:underline">cpho@mail.npust.edu.tw</a></p>
+                        </div>
+                        <div class="bg-white/60 p-4 rounded-xl border border-gray-100">
+                            <h4 class="font-bold text-gray-800 mb-2 flex items-center">
+                                <i class="fas fa-tasks mr-2 text-npust-green"></i> 承辦業務
+                            </h4>
+                            <p class="text-sm text-gray-600">職掌研究發展處產學合作中心業務之執行。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成員網格 -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- 李秀珍 -->
+                <div class="team-card bg-gray-50 rounded-xl p-6 border border-gray-100 transition-all flex flex-col sm:flex-row gap-6">
+                    <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 text-gray-500 text-3xl">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">李秀珍</h3>
+                        <p class="text-npust-green text-sm font-medium mb-3">專案經理</p>
+                        <div class="text-xs text-gray-500 space-y-1 mb-4">
+                            <p><i class="fas fa-phone-alt mr-2"></i> 6571</p>
+                            <p><i class="fas fa-envelope mr-2"></i> joanli@mail.npust.edu.tw</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <p class="text-xs font-bold text-gray-700 mb-2">承辦業務：</p>
+                            <ul class="text-xs text-gray-600 duty-list">
+                                <li>教師技術推廣媒合工作</li>
+                                <li>辦理國際產學合作推廣工作</li>
+                                <li>研發成果評估、商品化、跨域整合推廣</li>
+                                <li>承辦地方創生各鄉鎮與學校合作推動</li>
+                                <li>達人學院產業增能人才培育廠商發掘</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 潘志傑 -->
+                <div class="team-card bg-gray-50 rounded-xl p-6 border border-gray-100 transition-all flex flex-col sm:flex-row gap-6">
+                    <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 text-gray-500 text-3xl">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">潘志傑</h3>
+                        <p class="text-npust-green text-sm font-medium mb-3">專案經理</p>
+                        <div class="text-xs text-gray-500 space-y-1 mb-4">
+                            <p><i class="fas fa-phone-alt mr-2"></i> 6670</p>
+                            <p><i class="fas fa-envelope mr-2"></i> shija@mail.npust.edu.tw</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <p class="text-xs font-bold text-gray-700 mb-2">承辦業務：</p>
+                            <ul class="text-xs text-gray-600 duty-list">
+                                <li>高教深耕計畫產學合作連結面向規劃</li>
+                                <li>跨領域產學鏈結專案、商品化專案計畫</li>
+                                <li>跨國交流專案計畫、前瞻研究中心</li>
+                                <li>下世代技術與產品推動、管考業務</li>
+                                <li>智財轉移新創團隊及衍生企業服務平台</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 張簡珮辰 -->
+                <div class="team-card bg-gray-50 rounded-xl p-6 border border-gray-100 transition-all flex flex-col sm:flex-row gap-6">
+                    <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 text-gray-500 text-3xl">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">張簡珮辰</h3>
+                        <p class="text-npust-green text-sm font-medium mb-3">行政助理</p>
+                        <div class="text-xs text-gray-500 space-y-1 mb-4">
+                            <p><i class="fas fa-phone-alt mr-2"></i> 6573</p>
+                            <p><i class="fas fa-envelope mr-2"></i> ccpc@mail.npust.edu.tw</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <p class="text-xs font-bold text-gray-700 mb-2">承辦業務：</p>
+                            <ul class="text-xs text-gray-600 duty-list">
+                                <li>教師產業研習或研究相關行政業務</li>
+                                <li>全國學生實務專題競賽相關工作</li>
+                                <li>經濟部「學界協助中小企業」等計畫</li>
+                                <li>中國工程師學會產學績優單位申請</li>
+                                <li>校務基本資料庫填報、中心財產管理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 黃彥騰 -->
+                <div class="team-card bg-gray-50 rounded-xl p-6 border border-gray-100 transition-all flex flex-col sm:flex-row gap-6">
+                    <div class="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 text-gray-500 text-3xl">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">黃彥騰</h3>
+                        <p class="text-npust-green text-sm font-medium mb-3">行政助理</p>
+                        <div class="text-xs text-gray-500 space-y-1 mb-4">
+                            <p><i class="fas fa-phone-alt mr-2"></i> 6572</p>
+                            <p><i class="fas fa-envelope mr-2"></i> yt728@mail.npust.edu.tw</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <p class="text-xs font-bold text-gray-700 mb-2">承辦業務：</p>
+                            <ul class="text-xs text-gray-600 duty-list">
+                                <li>執行產學中心相關行政業務</li>
+                                <li>協助產業鏈結：廠商拜訪、產學媒合</li>
+                                <li>協助本校國內外技術推廣活動辦理</li>
+                                <li>協助各項專案計畫工作執行</li>
+                                <li>其他中心臨時交辦事項</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服務 -->
+    <section id="services" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">核心服務項目</h2>
+                <p class="text-gray-600">我們提供專業的媒合與輔導，縮短農工研發與市場的距離</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 服務 1 -->
+                <div class="service-card bg-white p-8 rounded-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-handshake text-npust-green text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">農工技術媒合</h3>
+                    <p class="text-gray-600 mb-6">依據企業技術需求，精準媒合校內專業研發團隊，進行委託研發、技術開發或產學合作計畫。</p>
+                    <a href="#" class="text-npust-green font-medium hover:underline">了解詳情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- 服務 2 -->
+                <div class="service-card bg-white p-8 rounded-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-lightbulb text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">智財管理與技轉</h3>
+                    <p class="text-gray-600 mb-6">提供專利申請諮詢、技術盤點、評估及商標授權服務，將實驗室成果轉化為商業價值。</p>
+                    <a href="#" class="text-npust-green font-medium hover:underline">了解詳情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- 服務 3 -->
+                <div class="service-card bg-white p-8 rounded-xl transition-all duration-300">
+                    <div class="w-16 h-16 bg-yellow-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-yellow-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">創新育成輔導</h3>
+                    <p class="text-gray-600 mb-6">為初創企業提供辦公場域、業師諮詢、資金媒合及商業模式開發等全方位育成服務。</p>
+                    <a href="#" class="text-npust-green font-medium hover:underline">了解詳情 <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新消息 -->
+    <section id="news" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">最新動態</h2>
+                    <p class="text-gray-600">中心活動、農工補助申請與公告</p>
+                </div>
+                <a href="#" class="text-npust-green font-bold border-b-2 border-npust-green">查看更多</a>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 文章 1 -->
+                <div class="bg-white border rounded-lg overflow-hidden hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1540317580384-e5d43616b9aa?auto=format&fit=crop&q=80&w=800" alt="農工媒合交流會" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-white bg-npust-green px-2 py-1 rounded">活動</span>
+                        <span class="text-gray-400 text-sm ml-2">2026-03-25</span>
+                        <h3 class="font-bold text-lg mt-3 mb-2">【活動通知】智慧農工跨域技術媒合交流會</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">邀請本校工學院及農學院教授分享最新研發成果，歡迎企業代表踴躍報名參加交流...</p>
+                    </div>
+                </div>
+
+                <!-- 文章 2 -->
+                <div class="bg-white border rounded-lg overflow-hidden hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=800" alt="專利申請補助" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-white bg-blue-600 px-2 py-1 rounded">公告</span>
+                        <span class="text-gray-400 text-sm ml-2">2026-03-20</span>
+                        <h3 class="font-bold text-lg mt-3 mb-2">115年度農工專利申請補助計畫開始收件</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">為鼓勵校內師生進行農工研發成果專利化，中心開放年度補助申請，詳情請下載手冊...</p>
+                    </div>
+                </div>
+
+                <!-- 文章 3 -->
+                <div class="bg-white border rounded-lg overflow-hidden hover:shadow-md transition">
+                    <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?auto=format&fit=crop&q=80&w=800" alt="獲獎成果" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-white bg-yellow-500 px-2 py-1 rounded">成果</span>
+                        <span class="text-gray-400 text-sm ml-2">2026-03-15</span>
+                        <h3 class="font-bold text-lg mt-3 mb-2">賀！本校工學團隊榮獲 2026 國際創新發明獎</h3>
+                        <p class="text-gray-600 text-sm line-clamp-2">育成廠商「屏科智慧製造」以自動化生產技術勇奪國際發明展金牌獎...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡我們 -->
+    <section id="contact" class="py-20 bg-npust-green text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-16">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-8 italic">Let's Create Future Together</h2>
+                    <h3 class="text-2xl font-bold mb-6">國立屏東科技大學 產學合作中心</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-4 text-xl"></i>
+                            <p>91201 屏東縣內埔鄉學府路1號<br>技術與產學合作大樓 3樓</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt mr-4 text-xl"></i>
+                            <p>+886-8-7703202 分機 6000</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-4 text-xl"></i>
+                            <p>industry@mail.npust.edu.tw</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/40 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 bg-white rounded-2xl p-8 text-gray-800">
+                    <h3 class="text-xl font-bold mb-6">諮詢留言</h3>
+                    <form onsubmit="event.preventDefault(); document.getElementById('success-msg').classList.remove('hidden');" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-1">姓名</label>
+                                <input type="text" class="w-full border-gray-300 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-npust-green outline-none" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-1">單位名稱</label>
+                                <input type="text" class="w-full border-gray-300 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-npust-green outline-none" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">電子郵件</label>
+                            <input type="email" class="w-full border-gray-300 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-npust-green outline-none" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">需求類別</label>
+                            <select class="w-full border-gray-300 border rounded-lg px-4 py-2 focus:ring-2 focus:ring-npust-green outline-none">
+                                <option>農工產學媒合</option>
+                                <option>技術移轉</option>
+                                <option>育成進駐</option>
+                                <option>專利諮詢</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">留言內容</label>
+                            <textarea class="w-full border-gray-300 border rounded-lg px-4 py-2 h-32 focus:ring-2 focus:ring-npust-green outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-npust-green text-white font-bold py-3 rounded-lg hover:bg-npust-green-dark transition">送出諮詢</button>
+                        
+                        <div id="success-msg" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-center">
+                            感謝您的留言！我們將盡快與您聯繫。
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 國立屏東科技大學 產學合作中心. All Rights Reserved.</p>
+            <p class="mt-2">National Pingtung University of Science and Technology Industry-Academic Cooperation Center</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
