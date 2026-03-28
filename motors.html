@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>馬達製造生產管理系統 (MES)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto+Sans+TC', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .sidebar-link.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .status-pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        .pulse-green { background-color: #10b981; box-shadow: 0 0 0 rgba(16, 185, 129, 0.4); animation: pulse 2s infinite; }
+        .pulse-yellow { background-color: #f59e0b; }
+        .pulse-red { background-color: #ef4444; }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-slate-900 text-white flex-shrink-0 hidden md:flex flex-col">
+            <div class="p-6 flex items-center space-x-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xl font-bold tracking-wider">馬達智造系統</span>
+            </div>
+            
+            <nav class="flex-1 px-4 mt-4 space-y-2 overflow-y-auto">
+                <button onclick="showTab('dashboard')" id="btn-dashboard" class="sidebar-link active w-full flex items-center p-3 rounded-lg transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+                    </svg>
+                    總覽控制台
+                </button>
+                <button onclick="showTab('orders')" id="btn-orders" class="sidebar-link w-full flex items-center p-3 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                    生產工單
+                </button>
+                <button onclick="showTab('machines')" id="btn-machines" class="sidebar-link w-full flex items-center p-3 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    設備監控
+                </button>
+                <button onclick="showTab('inventory')" id="btn-inventory" class="sidebar-link w-full flex items-center p-3 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                    物料庫存
+                </button>
+                <button onclick="showTab('quality')" id="btn-quality" class="sidebar-link w-full flex items-center p-3 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    品質檢測
+                </button>
+            </nav>
+
+            <div class="p-4 bg-slate-800 mt-auto border-t border-slate-700">
+                <div class="flex items-center">
+                    <div class="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">管</div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium">系統管理員</p>
+                        <p class="text-xs text-gray-400">廠區：A棟 二樓</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col overflow-y-auto bg-gray-50">
+            <!-- Header -->
+            <header class="bg-white shadow-sm px-8 py-4 flex justify-between items-center sticky top-0 z-10">
+                <h2 id="page-title" class="text-2xl font-bold text-gray-800">總覽控制台</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="text-right mr-4 border-r pr-4 border-gray-200">
+                        <p class="text-xs text-gray-500 uppercase font-semibold">當前時間</p>
+                        <p id="current-time" class="text-sm font-medium tabular-nums">2024-05-20 14:30:15</p>
+                    </div>
+                    <button class="relative p-2 text-gray-400 hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="p-8">
+                <!-- Dashboard Tab -->
+                <section id="tab-dashboard">
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <p class="text-gray-500 text-sm font-medium">今日預定產量</p>
+                            <div class="flex items-end justify-between mt-2">
+                                <h3 class="text-3xl font-bold">1,200 <span class="text-sm font-normal text-gray-400">台</span></h3>
+                                <span class="text-blue-500 text-sm font-semibold">+5% vs 昨日</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full mt-4">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 72%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">當前達成率: 72%</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <p class="text-gray-500 text-sm font-medium">成品合格率 (OEE)</p>
+                            <div class="flex items-end justify-between mt-2">
+                                <h3 class="text-3xl font-bold">98.4 <span class="text-sm font-normal text-gray-400">%</span></h3>
+                                <span class="text-green-500 text-sm font-semibold">目標 98%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full mt-4">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 98.4%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">品質控制穩定</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <p class="text-gray-500 text-sm font-medium">稼動中設備</p>
+                            <div class="flex items-end justify-between mt-2">
+                                <h3 class="text-3xl font-bold">14 <span class="text-sm font-normal text-gray-400">/ 16</span></h3>
+                                <span class="text-red-500 text-sm font-semibold">2 台停機</span>
+                            </div>
+                            <div class="flex space-x-1 mt-4">
+                                <div class="flex-1 bg-green-500 h-2 rounded-l-full"></div>
+                                <div class="flex-1 bg-green-500 h-2"></div>
+                                <div class="flex-1 bg-green-500 h-2"></div>
+                                <div class="flex-1 bg-yellow-500 h-2"></div>
+                                <div class="flex-1 bg-red-500 h-2 rounded-r-full"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">產線 #2 異常排除中</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <p class="text-gray-500 text-sm font-medium">當日能耗</p>
+                            <div class="flex items-end justify-between mt-2">
+                                <h3 class="text-3xl font-bold">842 <span class="text-sm font-normal text-gray-400">kWh</span></h3>
+                                <span class="text-gray-400 text-sm font-semibold">負載 65%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2 rounded-full mt-4">
+                                <div class="bg-orange-400 h-2 rounded-full" style="width: 65%"></div>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">符合節能規範</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Chart 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-6">各型號生產進度 (週趨勢)</h4>
+                            <canvas id="prodChart" height="250"></canvas>
+                        </div>
+                        <!-- Current Production Lines -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="flex justify-between items-center mb-6">
+                                <h4 class="font-bold text-gray-700">實時產線監控</h4>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md font-bold">LIVE</span>
+                            </div>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="font-semibold">產線 A (三相感應馬達)</span>
+                                        <span class="text-blue-600">85% 效率</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-1 bg-gray-100 h-4 rounded-full overflow-hidden">
+                                            <div class="bg-blue-500 h-full w-[85%]"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 font-mono w-16">340/400</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="font-semibold">產線 B (BLDC 高速馬達)</span>
+                                        <span class="text-green-600">92% 效率</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-1 bg-gray-100 h-4 rounded-full overflow-hidden">
+                                            <div class="bg-green-500 h-full w-[92%]"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 font-mono w-16">276/300</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="font-semibold">產線 C (伺服馬達客製)</span>
+                                        <span class="text-yellow-600">45% 效率</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-1 bg-gray-100 h-4 rounded-full overflow-hidden">
+                                            <div class="bg-yellow-500 h-full w-[45%]"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500 font-mono w-16">90/200</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-8 pt-6 border-t border-gray-100">
+                                <div class="flex justify-around text-center">
+                                    <div>
+                                        <p class="text-xs text-gray-400 uppercase">平均循環時間</p>
+                                        <p class="text-lg font-bold">42s</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400 uppercase">換線待機</p>
+                                        <p class="text-lg font-bold">12m</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400 uppercase">缺陷數</p>
+                                        <p class="text-lg font-bold text-red-500">3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Tab (Hidden by default) -->
+                <section id="tab-orders" class="hidden">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                        <div class="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                            <h4 class="font-bold text-gray-700 text-lg">生產工單管理</h4>
+                            <div class="flex space-x-2">
+                                <input type="text" placeholder="搜尋工單編號..." class="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">建立工單</button>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="bg-gray-50 border-b border-gray-100">
+                                    <tr>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">工單編號</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">產品型號</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">規格</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">目標數量</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">進度</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">狀態</th>
+                                        <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase">預計交期</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100">
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 font-mono text-sm font-semibold">WO-20240520-01</td>
+                                        <td class="px-6 py-4 text-sm font-medium text-blue-600">IM-Series 2.2kW</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">3-Phase AC / 1750 RPM</td>
+                                        <td class="px-6 py-4 text-sm">500</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                                    <div class="bg-green-500 h-full" style="width: 100%"></div>
+                                                </div>
+                                                <span class="text-xs font-medium">100%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-xs"><span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full font-bold">已完成</span></td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2024-05-20</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 font-mono text-sm font-semibold">WO-20240520-02</td>
+                                        <td class="px-6 py-4 text-sm font-medium text-blue-600">BLDC-NEMA23</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">48V / 4000 RPM</td>
+                                        <td class="px-6 py-4 text-sm">1,000</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                                    <div class="bg-blue-500 h-full" style="width: 45%"></div>
+                                                </div>
+                                                <span class="text-xs font-medium">45%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-xs"><span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full font-bold">生產中</span></td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2024-05-22</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-6 py-4 font-mono text-sm font-semibold">WO-20240520-03</td>
+                                        <td class="px-6 py-4 text-sm font-medium text-blue-600">SV-750-ULTRA</td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">Servo / High Torque</td>
+                                        <td class="px-6 py-4 text-sm">200</td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center space-x-2">
+                                                <div class="w-16 bg-gray-200 h-2 rounded-full overflow-hidden">
+                                                    <div class="bg-yellow-500 h-full" style="width: 5%"></div>
+                                                </div>
+                                                <span class="text-xs font-medium">5%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-xs"><span class="px-2 py-1 bg-yellow-100 text-yellow-600 rounded-full font-bold">備料中</span></td>
+                                        <td class="px-6 py-4 text-sm text-gray-500">2024-05-25</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Machines Tab (Placeholder Logic) -->
+                <section id="tab-machines" class="hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Machine Card -->
+                        <div class="bg-white rounded-xl shadow-sm border-l-4 border-green-500 p-6">
+                            <div class="flex justify-between mb-4">
+                                <h5 class="font-bold text-gray-700">自動繞線機 #01</h5>
+                                <span class="status-pulse pulse-green"></span>
+                            </div>
+                            <div class="text-sm space-y-2">
+                                <div class="flex justify-between"><span class="text-gray-400">當前負載:</span><span class="font-mono">78%</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">主軸溫度:</span><span class="font-mono">42.5°C</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">累積運行:</span><span class="font-mono">1,240h</span></div>
+                            </div>
+                            <button class="w-full mt-6 py-2 border border-gray-200 rounded text-sm hover:bg-gray-50">查看詳細參數</button>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-sm border-l-4 border-green-500 p-6">
+                            <div class="flex justify-between mb-4">
+                                <h5 class="font-bold text-gray-700">外殼壓鑄機 #04</h5>
+                                <span class="status-pulse pulse-green"></span>
+                            </div>
+                            <div class="text-sm space-y-2">
+                                <div class="flex justify-between"><span class="text-gray-400">當前負載:</span><span class="font-mono">62%</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">合模壓力:</span><span class="font-mono">250 Ton</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">累積運行:</span><span class="font-mono">4,521h</span></div>
+                            </div>
+                            <button class="w-full mt-6 py-2 border border-gray-200 rounded text-sm hover:bg-gray-50">查看詳細參數</button>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-sm border-l-4 border-red-500 p-6">
+                            <div class="flex justify-between mb-4">
+                                <h5 class="font-bold text-gray-700">轉子動平衡機 #02</h5>
+                                <span class="status-pulse pulse-red"></span>
+                            </div>
+                            <div class="text-sm space-y-2">
+                                <div class="flex justify-between"><span class="text-gray-400">狀態:</span><span class="font-bold text-red-500 italic">緊急停機</span></div>
+                                <div class="flex justify-between"><span class="text-gray-400">錯誤代碼:</span><span class="font-mono text-red-600">ERR_VIB_09</span></div>
+                                <p class="text-xs text-red-400 mt-2 italic">* 感測器讀數異常，待檢修</p>
+                            </div>
+                            <button class="w-full mt-6 bg-red-50 text-red-600 py-2 rounded text-sm font-semibold hover:bg-red-100">填寫維修紀錄</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Inventory Tab (Placeholder) -->
+                <section id="tab-inventory" class="hidden">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="font-bold text-gray-700 mb-6">關鍵物料庫存水位</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <p class="text-xs text-gray-400">漆包銅線 (φ1.0mm)</p>
+                                <p class="text-xl font-bold mt-1">450 <span class="text-sm font-normal">kg</span></p>
+                                <div class="w-full bg-gray-200 h-1.5 mt-2 rounded-full"><div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div></div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <p class="text-xs text-gray-400">NSK 軸承 6204ZZ</p>
+                                <p class="text-xl font-bold mt-1">1,200 <span class="text-sm font-normal">pcs</span></p>
+                                <div class="w-full bg-gray-200 h-1.5 mt-2 rounded-full"><div class="bg-red-500 h-1.5 rounded-full" style="width: 15%"></div></div>
+                                <p class="text-[10px] text-red-500 mt-1">⚠️ 低於安全庫存</p>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <p class="text-xs text-gray-400">矽鋼片 (EI型)</p>
+                                <p class="text-xl font-bold mt-1">3.2 <span class="text-sm font-normal">ton</span></p>
+                                <div class="w-full bg-gray-200 h-1.5 mt-2 rounded-full"><div class="bg-green-500 h-1.5 rounded-full" style="width: 60%"></div></div>
+                            </div>
+                            <div class="p-4 border border-gray-100 rounded-lg">
+                                <p class="text-xs text-gray-400">鋁壓鑄外殼</p>
+                                <p class="text-xl font-bold mt-1">850 <span class="text-sm font-normal">set</span></p>
+                                <div class="w-full bg-gray-200 h-1.5 mt-2 rounded-full"><div class="bg-yellow-500 h-1.5 rounded-full" style="width: 40%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quality Tab (Placeholder) -->
+                <section id="tab-quality" class="hidden text-center py-20 bg-white rounded-xl border border-dashed border-gray-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                    <h3 class="text-xl font-bold text-gray-500">品質檢測紀錄模組</h3>
+                    <p class="text-gray-400 mt-2">包含絕緣耐壓、負載測試、噪音頻譜分析等數據連動中...</p>
+                    <button class="mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition">進入檢測系統</button>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Tab switching logic
+        function showTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('section[id^="tab-"]').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            // Update sidebar buttons
+            document.querySelectorAll('.sidebar-link').forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('text-gray-400');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('active');
+            activeBtn.classList.remove('text-gray-400');
+
+            // Update header title
+            const titles = {
+                'dashboard': '總覽控制台',
+                'orders': '生產工單管理',
+                'machines': '設備狀態監控',
+                'inventory': '物料與成品庫存',
+                'quality': '品質控制中心'
+            };
+            document.getElementById('page-title').innerText = titles[tabId];
+        }
+
+        // Current Time Clock
+        function updateClock() {
+            const now = new Date();
+            const format = now.getFullYear() + '-' + 
+                         String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                         String(now.getDate()).padStart(2, '0') + ' ' + 
+                         String(now.getHours()).padStart(2, '0') + ':' + 
+                         String(now.getMinutes()).padStart(2, '0') + ':' + 
+                         String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('current-time').innerText = format;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Chart.js Initialization
+        window.onload = function() {
+            const ctx = document.getElementById('prodChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['週一', '週二', '週三', '週四', '週五', '週六', '週日'],
+                    datasets: [
+                        {
+                            label: '感應馬達',
+                            data: [350, 420, 380, 500, 450, 200, 150],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'BLDC 馬達',
+                            data: [280, 310, 290, 320, 305, 180, 120],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'Noto Sans TC' }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f3f4f6' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
