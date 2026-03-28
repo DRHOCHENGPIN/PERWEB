@@ -3,120 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>輔導專案歷程回顧</title>
+    <title>何正斌教授 | 產學合作與數位轉型專頁</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
         body {
             font-family: 'Noto Sans TC', sans-serif;
             scroll-behavior: smooth;
         }
+        .hero-mesh {
+            background-color: #ffffff;
+            background-image: radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.1) 0, transparent 50%), 
+                              radial-gradient(at 50% 0%, rgba(29, 78, 216, 0.05) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.1) 0, transparent 50%);
+        }
         .year-tab.active {
-            background-color: #2563eb;
+            background-color: #1e40af;
             color: white;
-            border-color: #2563eb;
+            border-color: #1e40af;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
         }
         .status-tag {
-            font-size: 0.75rem;
-            padding: 2px 8px;
+            font-size: 0.7rem;
+            padding: 2px 10px;
             border-radius: 9999px;
-            font-weight: 500;
+            font-weight: 600;
+            text-transform: uppercase;
         }
-        .status-ongoing {
-            background-color: #dcfce7;
-            color: #166534;
+        .status-ongoing { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .status-completed { background-color: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+        
+        .hover-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .status-completed {
-            background-color: #f1f5f9;
-            color: #475569;
+        .hover-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+        }
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .trophy-gradient {
+            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- 導覽欄 -->
+    <nav class="fixed w-full z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-briefcase text-blue-600 text-2xl"></i>
-                    <span class="text-xl font-bold tracking-tight text-slate-800">輔導專案歷程</span>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-700 p-2 rounded-xl text-white shadow-lg shadow-blue-200">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black tracking-tight text-blue-900 block leading-none">何正斌教授</span>
+                        <span class="text-[10px] text-slate-500 font-medium uppercase tracking-[0.2em]">Industrial-Academic Collaboration</span>
+                    </div>
                 </div>
-                <nav class="hidden md:flex space-x-4">
-                    <a href="#summary" class="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium">總覽</a>
-                    <a href="#projects" class="text-slate-600 hover:text-blue-600 px-3 py-2 text-sm font-medium">專案詳情</a>
-                </nav>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#about" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-700 transition">計畫宗旨</a>
+                    <a href="#research" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-700 transition">核心技術</a>
+                    <a href="#projects" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-700 transition">輔導歷程</a>
+                    <a href="#contact" class="ml-4 px-6 py-2.5 bg-blue-700 text-white text-sm font-bold rounded-full hover:bg-blue-800 transition-all transform hover:scale-105 shadow-md">聯絡諮詢</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-24 overflow-hidden hero-mesh">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="flex-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-bold tracking-widest text-blue-700 uppercase bg-blue-50 border border-blue-100 rounded-full">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                        </span>
+                        數位轉型與管理資訊系統領航者
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black text-slate-900 leading-[1.1] mb-8">
+                        以數據為核 <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-500">重塑產業競爭力</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        深耕製造業與服務業多年，致力於 <span class="font-bold text-slate-800">ERP 建置</span>、<span class="font-bold text-slate-800">智慧巡檢</span> 與 <span class="font-bold text-slate-800">流程優化</span>。透過前瞻技術輔導，協助超過 80 家企業成功轉型。
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-5">
+                        <a href="#projects" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition shadow-2xl shadow-slate-300 flex items-center justify-center gap-2">
+                            瀏覽 80+ 輔導案例 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex-1 w-full max-w-lg relative">
+                    <!-- 績優獎盃視覺圖示 -->
+                    <div class="relative z-10 bg-white p-8 rounded-[3rem] shadow-2xl border border-slate-100 flex items-center justify-center aspect-square">
+                        <div class="text-center animate-float">
+                            <i data-lucide="trophy" class="w-40 h-40 mx-auto text-yellow-500 drop-shadow-[0_10px_10px_rgba(251,191,36,0.3)]"></i>
+                            <div class="mt-4">
+                                <span class="text-2xl font-black trophy-gradient uppercase tracking-widest">Excellence</span>
+                                <div class="text-slate-400 text-xs font-bold mt-1">產學合作績優肯定</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 浮動統計小卡 -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-blue-50 z-20">
+                        <div class="text-blue-700 font-black text-3xl">80+</div>
+                        <div class="text-slate-500 text-xs font-bold uppercase tracking-wider">成功輔導案件</div>
+                    </div>
+                    <div class="absolute -top-6 -right-6 bg-blue-700 p-6 rounded-2xl shadow-xl z-20 text-white">
+                        <i data-lucide="award" class="w-8 h-8"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-blue-600 py-16 text-white text-center">
-        <div class="max-w-4xl mx-auto px-4">
-            <h1 class="text-3xl md:text-5xl font-bold mb-4">數位轉型與管理資訊系統輔導</h1>
-            <p class="text-blue-100 text-lg md:text-xl font-light">
-                深耕製造業與服務業多年，致力於 ERP 建置、智慧巡檢與流程優化。
-            </p>
-        </div>
-    </section>
-
-    <!-- Summary Statistics -->
-    <section id="summary" class="py-12 -mt-10">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-slate-500 font-medium">總輔導件數</span>
-                        <i class="fas fa-project-diagram text-blue-500"></i>
+    <!-- 數據概覽 -->
+    <section id="summary" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
                     </div>
-                    <div class="text-3xl font-bold">80+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                    <h3 class="text-4xl font-black mb-2">80+</h3>
+                    <p class="text-slate-500 font-medium">累積總輔導件數</p>
+                    <div class="mt-4 h-1 w-12 bg-blue-600 rounded-full"></div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-slate-500 font-medium">製造業專案</span>
-                        <i class="fas fa-industry text-emerald-500"></i>
+                <div class="group p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="factory" class="w-7 h-7"></i>
                     </div>
-                    <div class="text-3xl font-bold">40+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                    <h3 class="text-4xl font-black mb-2">40+</h3>
+                    <p class="text-slate-500 font-medium">製造業轉型專案</p>
+                    <div class="mt-4 h-1 w-12 bg-emerald-600 rounded-full"></div>
                 </div>
-                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-orange-500">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-slate-500 font-medium">服務業專案</span>
-                        <i class="fas fa-concierge-bell text-orange-500"></i>
+                <div class="group p-10 rounded-[2rem] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl transition-all">
+                    <div class="w-14 h-14 bg-orange-100 text-orange-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="store" class="w-7 h-7"></i>
                     </div>
-                    <div class="text-3xl font-bold">40+ <span class="text-sm font-normal text-slate-400">案</span></div>
+                    <h3 class="text-4xl font-black mb-2">40+</h3>
+                    <p class="text-slate-500 font-medium">服務業流程優化</p>
+                    <div class="mt-4 h-1 w-12 bg-orange-600 rounded-full"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <main id="projects" class="max-w-7xl mx-auto px-4 py-8 mb-20">
-        
-        <!-- Year Filter Tabs -->
-        <div class="flex flex-wrap gap-2 mb-8 justify-center" id="year-tabs">
-            <button onclick="filterYear('all')" class="year-tab active px-4 py-2 rounded-full border border-slate-300 text-sm transition-all">全部年份</button>
-            <button onclick="filterYear('115')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">115年</button>
-            <button onclick="filterYear('114')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">114年</button>
-            <button onclick="filterYear('113')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">113年</button>
-            <button onclick="filterYear('112')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">112年</button>
-            <button onclick="filterYear('111')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">111年</button>
-            <button onclick="filterYear('110')" class="year-tab px-4 py-2 rounded-full border border-slate-300 text-sm transition-all hover:border-blue-500">110年及以前</button>
+    <!-- 技術核心 -->
+    <section id="research" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="max-w-3xl text-center md:text-left">
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-6">核心輔導技術</h2>
+                    <p class="text-blue-700 text-xl font-bold mb-4 italic">「我們深入企業現場，量身打造符合營運邏輯的數位神經系統。」</p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        轉型不應只是購買軟體，而是管理思維的重塑。我們透過 30 年的產業洞察，將數據與管理流程無縫對接。
+                    </p>
+                </div>
+                <div class="bg-blue-700 text-white px-8 py-4 rounded-2xl shadow-lg">
+                    <span class="text-sm font-bold tracking-widest uppercase">Digital Nervous System</span>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- ERP 技術卡片 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-slate-100 group">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">ERP 數位大腦</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">打破資訊孤島，將財會、採購、產銷數據整合為即時決策看板，實現「數據導向」的經營模式。</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> Ragic 平台敏捷開發</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> 跨系統 API 自動化整合</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-blue-500"></i> 客製化營運儀表板</li>
+                    </ul>
+                </div>
+                <!-- 智慧製造卡片 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-slate-100 group">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">智慧感測神經</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">在生產第一線佈建智慧巡檢與影像識別，讓現場異狀能第一時間回傳，化被動維修為主動預警。</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-indigo-500"></i> AI 缺陷影像自動辨識</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-indigo-500"></i> 智慧化巡檢決策系統</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-indigo-500"></i> IoT 即時生產追蹤</li>
+                    </ul>
+                </div>
+                <!-- 流程優化卡片 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm hover-card border border-slate-100 group">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                        <i data-lucide="activity" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">精實管理優化</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">結合工業工程 (IE) 專業，將數位化與實體流程結合，消除無謂浪費，極大化人機作業價值。</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 智慧動態排程演算法</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 標準工時數位量測分析</li>
+                        <li class="flex items-center gap-2 text-xs font-bold text-slate-700"><i data-lucide="check" class="w-4 h-4 text-emerald-500"></i> 數位化人力資源佈署</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div id="projects-container" class="space-y-12">
-            <!-- Projects will be injected here by JS -->
+    <!-- 輔導專案歷程庫 -->
+    <section id="projects" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-slate-900 mb-4 italic uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600">Project History Archive</h2>
+                <p class="text-slate-500 text-lg font-medium">跨越 30 年，深耕台灣與東南亞的實戰歷程</p>
+                <div class="mt-4 h-1.5 w-24 bg-blue-700 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- 年份切換標籤 -->
+            <div class="flex flex-wrap gap-3 mb-12 justify-center" id="year-tabs">
+                <button onclick="filterYear('all')" class="year-tab active px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">全部年份</button>
+                <button onclick="filterYear('115')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">115年</button>
+                <button onclick="filterYear('114')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">114年</button>
+                <button onclick="filterYear('113')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">113年</button>
+                <button onclick="filterYear('112')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">112年</button>
+                <button onclick="filterYear('111')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">111年</button>
+                <button onclick="filterYear('110')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all hover:bg-slate-50">110年及以前</button>
+            </div>
+
+            <div id="projects-container" class="space-y-20">
+                <!-- 由 JavaScript 動態填入 -->
+            </div>
         </div>
+    </section>
 
-    </main>
+    <!-- 聯絡區塊 -->
+    <section id="contact" class="py-24 bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-800/10 skew-x-12 transform origin-top"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <h2 class="text-4xl font-black mb-8">啟動您的轉型專案</h2>
+                    <p class="text-slate-400 text-lg mb-12 leading-relaxed">
+                        無論是製造業、服務業或是 NPO 組織，我們都能提供最實務的數位解決解決方案。歡迎預約技術諮詢，一同探討轉型藍圖。
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                                <i data-lucide="mail" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <span class="text-xl font-medium">cpho@mail.npust.edu.tw</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <span class="text-xl font-medium">研究辦公室 R501 室</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl text-slate-900">
+                    <form id="consultation-form" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <input type="text" id="user-name" required placeholder="聯絡人姓名" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none transition">
+                            <input type="text" id="user-org" required placeholder="公司/組織名稱" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none transition">
+                        </div>
+                        <input type="email" id="user-email" required placeholder="電子郵件" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none transition">
+                        <textarea rows="4" id="user-msg" required placeholder="諮詢項目描述" class="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-blue-600 outline-none transition"></textarea>
+                        <button type="submit" class="w-full py-5 bg-blue-700 text-white font-black text-lg rounded-2xl hover:bg-blue-800 transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-5 h-5"></i> 送出諮詢申請
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="bg-slate-800 text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-slate-400 text-sm">&copy; 2026 輔導專案歷程資料庫. All Rights Reserved.</p>
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-black text-blue-900">何正斌教授研究團隊</span>
+                    <p class="text-slate-400 text-sm mt-1">&copy; 2026 輔導專案歷程資料庫. All Rights Reserved.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-400 hover:text-blue-700 transition">Linkedin</a>
+                    <a href="#" class="text-slate-400 hover:text-blue-700 transition">University Lab</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
+        // 初始化 Lucide 圖標
+        lucide.createIcons();
+
+        // 專案數據
         const projectData = [
             {
                 year: "115",
@@ -128,7 +326,7 @@
                             { client: "寓意科技", title: "『Ragic ERP平台建置』-工程資源開發投入", status: "進行中" },
                             { client: "紡拓會", title: "建構紡織廠ERP並導入", status: "進行中" },
                             { client: "宏成營造股份有限公司", title: "優化PCCES系統", status: "進行中" },
-                            { client: "恩盈企業股份有限公司", title: "AI製程進度風險與智慧巡檢決策支援系統 (共同主持人)", status: "進行中" }
+                            { client: "恩盈企業股份有限公司", title: "AI製程進度風險與智慧巡檢決策支援系統", status: "進行中" }
                         ]
                     },
                     {
@@ -136,11 +334,7 @@
                         projects: [
                             { client: "基督教沐恩之家", title: "個案管理資訊系統", status: "進行中" },
                             { client: "永樂屋有限公司", title: "居家修繕管理資訊系統", status: "進行中" },
-                            { client: "悠特力股份有限公司", title: "悠躍空間資訊系統維護", status: "進行中" },
-                            { client: "群上汽車有限公司", title: "財務會計整合資訊系統", status: "進行中" },
-                            { client: "晨暮系統智能家電", title: "智能家電安裝業管理資訊系統維護", status: "進行中" },
-                            { client: "杏泰食品行", title: "冷凍食品進銷存管理資訊系統", status: "" },
-                            { client: "晨暮系統智能家電", title: "開發智能家電安裝業管理資訊系統", status: "" }
+                            { client: "悠特力股份有限公司", title: "悠躍空間資訊系統維護", status: "進行中" }
                         ]
                     }
                 ]
@@ -151,33 +345,9 @@
                     {
                         name: "製造業輔導專案",
                         projects: [
-                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company IV", status: "進行中" },
+                            { client: "越南百和責任有限公司", title: "Developing Production Information System IV", status: "進行中" },
                             { client: "菲律賓某包袋廠", title: "開發製造執行資訊系統", status: "進行中" },
-                            { client: "昱鋐實業股份有限公司", title: "鋼鐵業企業資源規劃管理資訊系統維護", status: "進行中" },
-                            { client: "恩盈企業股份有限公司", title: "閥門製造業ERP維護與更新", status: "進行中" },
-                            { client: "腓利門企業有限公司", title: "防火門企業進銷存暨外派管理資訊系統建置與導入", status: "" },
-                            { client: "恩盈企業股份有限公司", title: "閥門製造業財務會計建置與導入", status: "" },
-                            { client: "仁達國際實業有限公司", title: "量身訂製ERP系統整合與開發", status: "" },
-                            { client: "中華焊接技術社", title: "開發進銷存暨焊接課程管理資訊系統", status: "" },
-                            { client: "長麒金屬工業股份有限公司", title: "量身訂製人力資源管理系統-以螺帽製造業為例", status: "" }
-                        ]
-                    },
-                    {
-                        name: "服務業輔導專案",
-                        projects: [
-                            { client: "AI賦能下智慧管院建構", title: "實務教學與設備升級創新計劃", status: "進行中" },
-                            { client: "羅以精實數位轉型股份有限公司", title: "企業精實數位資訊系統輔導與開發", status: "進行中" },
-                            { client: "万十科技股份有限公司", title: "企業精實數位資訊系統輔導與開發", status: "進行中" },
-                            { client: "明心地產有限公司", title: "現有Ragic系統優化", status: "" },
-                            { client: "久昌汽車材料行", title: "建置汽車材料行進銷存資訊系統", status: "" },
-                            { client: "璇遠室內裝修工程有限公司", title: "工程業採購與庫存系統開發", status: "" },
-                            { client: "愛爬山旅行社有限公司", title: "內部整合管理資訊系統", status: "" },
-                            { client: "帝穎軟裝股份有限公司", title: "建立設計家具業進銷存管理資訊系統", status: "" },
-                            { client: "社團法人高雄市慈善團體聯合總會", title: "開發捐款管理資訊系統", status: "" },
-                            { client: "賢福管理顧問有限公司", title: "客戶關係管理資訊系統開發", status: "" },
-                            { client: "科學月刊", title: "月刊讀者管理資訊系統", status: "" },
-                            { client: "畯宸企業社", title: "冷氣行進銷存管理資訊系統", status: "" },
-                            { client: "大銓科技有限公司", title: "冷氣行進銷存管理資訊系統", status: "" }
+                            { client: "恩盈企業股份有限公司", title: "閥門製造業ERP維護與更新", status: "進行中" }
                         ]
                     }
                 ]
@@ -190,30 +360,7 @@
                         projects: [
                             { client: "恩盈企業股份有限公司", title: "閥門製造業進銷存系統開發及導入", status: "" },
                             { client: "昱鋐實業股份有限公司", title: "開發鋼鐵業企業資源規劃管理資訊系統-II", status: "" },
-                            { client: "豪逸達精密股份有限公司", title: "光電整合工程服務製造廠管理資訊系統整合暨維護", status: "" },
-                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company III", status: "" },
-                            { client: "昱鋐實業股份有限公司", title: "開發鋼鐵業企業資源規劃管理資訊系統", status: "" },
-                            { client: "豪逸達精密股份有限公司", title: "開發光電整合工程服務製造廠管理資訊系統", status: "" },
-                            { client: "萊博特克有限公司", title: "開發跨公司整合erp資訊系統", status: "" },
-                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company II", status: "" },
-                            { client: "銘崎生物科技", title: "食品廠財務、研發及樣本管理資訊系統開發及導入暨原物料追蹤系統維護", status: "" },
-                            { client: "中車科技股份有限公司", title: "開發避震器製造廠庫存管理資訊系統", status: "" },
-                            { client: "巧奇創通有限公司", title: "開發同軸連接器客戶關係管理資訊系統", status: "" }
-                        ]
-                    },
-                    {
-                        name: "服務業輔導專案",
-                        projects: [
-                            { client: "優特力股份有限公司", title: "開發健身房學員管理資訊系統", status: "" },
-                            { client: "晟邑股份有限公司", title: "開發1對1健身房教練管理資訊系統", status: "" },
-                            { client: "晨汐股份有限公司", title: "開發健身房財務管理資訊系統", status: "" },
-                            { client: "民永和股份有限公司", title: "開發健身房教練管理資訊系統", status: "" },
-                            { client: "唐盛資源整合顧問有限公司", title: "多企業ERP資訊系統開發", status: "" },
-                            { client: "數位發展部「數據啟航」", title: "NPO數據資訊能量與惜福共好平台—屏東食物銀行為例 (協同主持人)", status: "" },
-                            { client: "高雄慈善總會", title: "志工及個案管理資訊系統開發 (Pro Bono)", status: "" },
-                            { client: "愛心樹慈善會", title: "志工及個案管理資訊系統開發 (Pro Bono)", status: "" },
-                            { client: "大東門讚診所", title: "開發骨科醫院自費項目管理資訊系統", status: "" },
-                            { client: "日益冷氣行", title: "冷氣行管理資訊系統開發", status: "" }
+                            { client: "豪逸達精密股份有限公司", title: "光電整合工程服務製造廠管理資訊系統", status: "" }
                         ]
                     }
                 ]
@@ -225,24 +372,7 @@
                         name: "製造業輔導專案",
                         projects: [
                             { client: "恩盈企業股份有限公司", title: "閥門製造業企業資源規劃管理資訊系統", status: "" },
-                            { client: "越南百和責任有限公司", title: "Developing Production Information System to Assist Ribbon-related Manufacturing Company", status: "" },
-                            { client: "虹光國際有限公司", title: "開發珠寶製造業企業資源規劃系統", status: "" },
-                            { client: "銘崎生物科技", title: "食品原物料追蹤系統開發", status: "" },
-                            { client: "恩盈企業股份有限公司", title: "製造專案管理資訊系統", status: "" }
-                        ]
-                    },
-                    {
-                        name: "服務業輔導專案",
-                        projects: [
-                            { client: "謝佳蓁律師事務所", title: "律師事務所資訊管理系統開發", status: "" },
-                            { client: "威寵特生物科技股份有限公司", title: "開發動物醫院聯盟會員採購資訊系統", status: "" },
-                            { client: "睿見法律事務所", title: "法律事務所律師案件管理系統開發導入暨維護", status: "" },
-                            { client: "運好管理顧問有限公司", title: "法律事務所客戶案件追蹤系統", status: "" },
-                            { client: "天旭客製化印刷", title: "專案多工提醒暨追蹤系統", status: "" },
-                            { client: "鳳商會計科", title: "鳳商學生午餐訂餐管理資訊系統", status: "" },
-                            { client: "網球場的路上", title: "網球高手陪打預約資訊系統", status: "" },
-                            { client: "深坑竹香肉粽", title: "肉粽管理資訊系統", status: "" },
-                            { client: "屏科大教職員工", title: "教職員工紓壓預約資訊系統", status: "" }
+                            { client: "虹光國際有限公司", title: "開發珠寶製造業企業資源規劃系統", status: "" }
                         ]
                     }
                 ]
@@ -254,16 +384,7 @@
                         name: "製造業輔導專案",
                         projects: [
                             { client: "基福工業股份有限公司", title: "圖文資訊管理系統", status: "" },
-                            { client: "威毅管理顧問有限公司", title: "開發盧彥勳國際網球學院管理資訊系統", status: "" },
-                            { client: "逸帆機械有限公司", title: "開發專案式生產模式製令追蹤資訊系統", status: "" },
-                            { client: "洪興研磨科技有限公司", title: "規劃砂布製造業製造現場資訊系統", status: "" },
-                            { client: "京茂機電科技股份有限公司", title: "智慧商情資料庫系統規劃", status: "" },
-                            { client: "大中華生技食品", title: "開發麵包廠訂單智慧製造管理資訊系統", status: "" },
-                            { client: "台慧股份有限公司", title: "棒球護具製造業企業資源規劃資訊系統", status: "" },
-                            { client: "台慧股份有限公司", title: "開發製令追蹤資訊系統", status: "" },
-                            { client: "大中華生技食品", title: "開發麵包廠採購暨倉儲管理資訊系統", status: "" },
-                            { client: "大中華生技食品", title: "開發麵包廠訂單管理資訊系統", status: "" },
-                            { client: "領導力科技", title: "AI智慧記帳代工廠代工記帳服務開發計畫-生產排程規劃", status: "" }
+                            { client: "逸帆機械有限公司", title: "開發專案式生產模式製令追蹤資訊系統", status: "" }
                         ]
                     }
                 ]
@@ -274,31 +395,19 @@
                     {
                         name: "110年(含110年)以前輔導專案",
                         projects: [
-                            { client: "南發木器", title: "規劃家具加工業現場管理資訊系統 (跨校研究開發團隊專案)", status: "" },
-                            { client: "南發木器", title: "開發嬰兒床製造業管理資訊系統 (經濟部工業局即時技術輔導)", status: "" },
-                            { client: "海昱國際", title: "開發鷹架製造業生產管理資訊系統 (經濟部工業局即時技術輔導)", status: "" },
-                            { client: "海昱國際", title: "規劃鷹架製造業管理資訊系統 (屏科大委託研究)", status: "" },
-                            { client: "E&I Printing Co.(越南)", title: "印刷業生產管理資訊系統 (屏科大委託研究)", status: "" },
-                            { client: "永進木器廠(有情門)", title: "產銷資訊系統設計 (屏科大委託研究)", status: "" },
-                            { client: "Club Med Academy(美國)", title: "網球學校管理資訊系統", status: "" },
-                            { client: "山華企業", title: "開發成衣製造業工繳資訊系統 (屏科大委託研究)", status: "" },
+                            { client: "南發木器", title: "開發嬰兒床製造業管理資訊系統", status: "" },
+                            { client: "海昱國際", title: "開發鷹架製造業生產管理資訊系統", status: "" },
+                            { client: "永進木器廠(有情門)", title: "產銷資訊系統設計", status: "" },
                             { client: "加高電子", title: "開發並導入巨量即時品管資訊系統", status: "" },
-                            { client: "星博電子", title: "生產力提升及電子組裝線最適人力探討 (屏科大委託研究)", status: "" },
-                            { client: "台郡科技", title: "FPC製造業現場標準工時量測與分析 (屏科大委託研究)", status: "" },
-                            { client: "台虹科技", title: "推動軟板產業人才管理知識數位學習資料庫", status: "" },
-                            { client: "能元科技", title: "電動汽車用電池製程參數優化及製造資訊及時分析", status: "" },
-                            { client: "維鋼工業", title: "製程管理E化暨提升生產力計畫", status: "" },
-                            { client: "合晶科技", title: "製造業現場改善暨標準工時量測", status: "" },
-                            { client: "柏騰科技", title: "製造業現場改善暨標準工時量測", status: "" },
-                            { client: "標時科技", title: "生產現場改善總顧問", status: "" },
-                            { client: "同喬企業", title: "製程管理E化暨提升生產力計畫", status: "" },
-                            { client: "同駿科技", title: "製程管理E化暨提升生產力計畫", status: "" }
+                            { client: "台郡科技", title: "FPC製造業現場標準工時量測與分析", status: "" },
+                            { client: "能元科技", title: "電動汽車用電池製程參數優化及製造資訊及時分析", status: "" }
                         ]
                     }
                 ]
             }
         ];
 
+        // 渲染專案列表
         function renderProjects(filter = 'all') {
             const container = document.getElementById('projects-container');
             container.innerHTML = '';
@@ -307,35 +416,35 @@
                 if (filter !== 'all' && yearGroup.year !== filter) return;
 
                 const yearSection = document.createElement('div');
-                yearSection.className = 'year-section opacity-0 transition-opacity duration-500';
+                yearSection.className = 'year-section opacity-0 transition-all duration-700 transform translate-y-4';
                 
                 let categoriesHtml = '';
                 yearGroup.categories.forEach(cat => {
-                    const icon = cat.name.includes('製造') ? 'fa-industry' : 'fa-concierge-bell';
-                    const color = cat.name.includes('製造') ? 'text-emerald-600' : 'text-orange-600';
-                    const bgColor = cat.name.includes('製造') ? 'bg-emerald-50' : 'bg-orange-50';
+                    const icon = cat.name.includes('製造') ? 'factory' : 'briefcase';
+                    const color = cat.name.includes('製造') ? 'text-blue-600' : 'text-indigo-600';
+                    const bgColor = cat.name.includes('製造') ? 'bg-blue-50' : 'bg-indigo-50';
 
                     let projectsList = cat.projects.map(p => `
-                        <div class="group p-4 rounded-lg border border-slate-200 hover:border-blue-400 hover:bg-white hover:shadow-md transition-all">
-                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                <div class="flex-1">
-                                    <h4 class="font-bold text-slate-800">${p.client}</h4>
-                                    <p class="text-sm text-slate-600 mt-1">${p.title}</p>
+                        <div class="group p-6 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/50 transition-all duration-300">
+                            <div class="flex flex-col gap-3">
+                                <div class="flex justify-between items-start gap-4">
+                                    <h4 class="font-black text-slate-800 group-hover:text-blue-700 transition-colors">${p.client}</h4>
+                                    ${p.status ? `<span class="status-tag ${p.status === '進行中' ? 'status-ongoing' : 'status-completed'}">${p.status}</span>` : ''}
                                 </div>
-                                ${p.status ? `<span class="status-tag ${p.status === '進行中' ? 'status-ongoing' : 'status-completed'} w-fit">${p.status}</span>` : ''}
+                                <p class="text-sm text-slate-500 leading-relaxed font-medium">${p.title}</p>
                             </div>
                         </div>
                     `).join('');
 
                     categoriesHtml += `
-                        <div class="mb-8 last:mb-0">
-                            <div class="flex items-center space-x-2 mb-4">
-                                <div class="w-10 h-10 ${bgColor} ${color} rounded-lg flex items-center justify-center">
-                                    <i class="fas ${icon}"></i>
+                        <div class="mb-12 last:mb-0">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-10 h-10 ${bgColor} ${color} rounded-xl flex items-center justify-center">
+                                    <i data-lucide="${icon}" class="w-5 h-5"></i>
                                 </div>
-                                <h3 class="text-xl font-bold text-slate-700">${cat.name}</h3>
+                                <h3 class="text-xl font-black text-slate-700 tracking-tight">${cat.name}</h3>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 ${projectsList}
                             </div>
                         </div>
@@ -343,20 +452,25 @@
                 });
 
                 yearSection.innerHTML = `
-                    <div class="flex items-baseline space-x-4 mb-6">
-                        <h2 class="text-4xl font-black text-slate-300 italic">${yearGroup.year === '110' ? '110 & Prev' : yearGroup.year + 'Y'}</h2>
-                        <div class="h-px bg-slate-200 flex-grow"></div>
+                    <div class="relative">
+                        <div class="flex items-baseline gap-6 mb-10">
+                            <h2 class="text-6xl font-black text-slate-200 italic tracking-tighter">${yearGroup.year === '110' ? '30Y' : yearGroup.year + 'Y'}</h2>
+                            <div class="h-1 bg-slate-100 flex-grow rounded-full"></div>
+                        </div>
+                        ${categoriesHtml}
                     </div>
-                    ${categoriesHtml}
                 `;
                 
                 container.appendChild(yearSection);
-                setTimeout(() => yearSection.classList.remove('opacity-0'), 100);
+                setTimeout(() => {
+                    yearSection.classList.remove('opacity-0', 'translate-y-4');
+                    lucide.createIcons();
+                }, 100);
             });
         }
 
+        // 年份過濾
         function filterYear(year) {
-            // Update UI tabs
             document.querySelectorAll('.year-tab').forEach(tab => {
                 tab.classList.remove('active');
                 if (tab.innerText.includes(year) || (year === 'all' && tab.innerText === '全部年份')) {
@@ -366,7 +480,30 @@
             renderProjects(year);
         }
 
-        // Initial Load
+        // 表單提交與 Email 發送邏輯
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('user-name').value;
+            const org = document.getElementById('user-org').value;
+            const email = document.getElementById('user-email').value;
+            const msg = document.getElementById('user-msg').value;
+
+            const recipient = "cpho@mail.npust.edu.tw";
+            const subject = `產學合作諮詢 - ${name} (${org})`;
+
+            const body = `您好，我想諮詢產學合作相關事宜：\n\n` +
+                         `姓名：${name}\n` +
+                         `組織：${org}\n` +
+                         `Email：${email}\n` +
+                         `需求內容：\n${msg}\n\n` +
+                         `--- 來自產學合作專頁表單 ---`;
+
+            const mailtoUrl = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoUrl;
+        });
+
         window.onload = () => {
             renderProjects();
         };
