@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鄔亞彬 Wu Ya-bin | 空軍風骨 ‧ 數位領航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .bg-grid {
+            background-image: radial-gradient(circle, #334155 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .plane-glow {
+            filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+        }
+        .animate-spin-reverse {
+            animation: spin-slow 15s linear infinite reverse;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-yellow-500/30">
+
+    <!-- 導覽列 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-500 plane-glow"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                <div class="text-2xl font-bold tracking-tighter text-white uppercase">WU YA-BIN</div>
+            </div>
+
+            <!-- 桌面端選單 -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-sm font-medium hover:text-yellow-500 transition-colors">首頁</a>
+                <a href="#about" class="text-sm font-medium hover:text-yellow-500 transition-colors">關於我</a>
+                <a href="#skills" class="text-sm font-medium hover:text-yellow-500 transition-colors">核心戰力</a>
+                <a href="#experience" class="text-sm font-medium hover:text-yellow-500 transition-colors">服役歷程</a>
+                <a href="#contact" class="text-sm font-medium hover:text-yellow-500 transition-colors">建立通訊</a>
+            </div>
+
+            <!-- 行動端按鈕 -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-yellow-500">
+                <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+
+        <!-- 行動端選單 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 absolute w-full shadow-lg p-6 flex flex-col space-y-4">
+            <a href="#home" class="mobile-link text-lg font-medium text-slate-300 hover:text-yellow-500">首頁</a>
+            <a href="#about" class="mobile-link text-lg font-medium text-slate-300 hover:text-yellow-500">關於我</a>
+            <a href="#skills" class="mobile-link text-lg font-medium text-slate-300 hover:text-yellow-500">核心戰力</a>
+            <a href="#experience" class="mobile-link text-lg font-medium text-slate-300 hover:text-yellow-500">服役歷程</a>
+            <a href="#contact" class="mobile-link text-lg font-medium text-slate-300 hover:text-yellow-500">建立通訊</a>
+        </div>
+    </nav>
+
+    <!-- 首頁 Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 -z-10">
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_#1e293b,_#020617)]"></div>
+            <div class="absolute -top-1/2 -right-1/4 w-full h-full bg-blue-900/10 blur-3xl transform rotate-12"></div>
+            <div class="absolute -bottom-1/2 -left-1/4 w-full h-full bg-yellow-500/5 blur-3xl transform -rotate-12"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative">
+            <div class="space-y-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 text-yellow-500 rounded-full text-sm font-semibold tracking-wide uppercase border border-yellow-500/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                    <span>空軍風骨，領航未來</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-white leading-tight">
+                    鄔亞彬<span class="text-yellow-500">.</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-lg leading-relaxed">
+                    以藍天之志，領航數位變革。結合<span class="text-yellow-500">屏科大工管碩專班</span>的嚴謹管理與空軍精準執行的意志，為您的企業提供卓越的技術解方。
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact" class="px-8 py-4 bg-yellow-500 text-slate-900 rounded-lg font-bold hover:bg-yellow-400 transition-all shadow-lg shadow-yellow-500/20 text-center">建立通訊</a>
+                    <a href="#experience" class="px-8 py-4 bg-transparent text-slate-300 border border-slate-700 rounded-lg font-semibold hover:bg-slate-800 hover:border-slate-500 transition-all text-center">檢視戰果</a>
+                </div>
+            </div>
+
+            <div class="relative">
+                <!-- 卡通空軍軍人頭像 -->
+                <div class="w-72 h-72 md:w-96 md:h-96 mx-auto rounded-3xl bg-gradient-to-br from-slate-800 to-slate-950 transform rotate-3 shadow-2xl border-4 border-slate-800/50 overflow-hidden relative z-10 flex items-center justify-center">
+                    <!-- 使用 SVG 繪製一個帥氣的卡通軍人 -->
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                        <circle cx="100" cy="100" r="100" fill="#0f172a" />
+                        <!-- 臉部 -->
+                        <path d="M60 90 Q100 160 140 90" fill="#ffdbac" />
+                        <circle cx="100" cy="85" r="50" fill="#ffdbac" />
+                        <!-- 空軍帽 -->
+                        <path d="M45 65 Q100 30 155 65 L165 75 Q100 50 35 75 Z" fill="#1e293b" />
+                        <path d="M90 45 L110 45 L105 55 L95 55 Z" fill="#eab308" /> <!-- 帽徽 -->
+                        <!-- 墨鏡 -->
+                        <rect x="65" y="75" width="30" height="20" rx="10" fill="#000" />
+                        <rect x="105" y="75" width="30" height="20" rx="10" fill="#000" />
+                        <path d="M95 80 L105 80" stroke="#000" stroke-width="2" />
+                        <!-- 衣服 -->
+                        <path d="M40 140 Q100 120 160 140 L180 200 L20 200 Z" fill="#1e40af" />
+                        <path d="M90 135 L110 135 L110 200 L90 200 Z" fill="#1e3a8a" />
+                        <!-- 肩章 -->
+                        <rect x="35" y="135" width="30" height="15" rx="2" fill="#eab308" />
+                        <rect x="135" y="135" width="30" height="15" rx="2" fill="#eab308" />
+                        <!-- 敬禮手勢 -->
+                        <path d="M150 140 L185 85 L160 75" fill="none" stroke="#ffdbac" stroke-width="12" stroke-linecap="round" />
+                    </svg>
+                </div>
+                <!-- 背景動畫裝飾 -->
+                <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] border-2 border-dashed border-slate-800/40 rounded-full animate-spin-slow"></div>
+                <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] border-2 border-dashed border-yellow-500/5 rounded-full animate-spin-reverse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我 Section -->
+    <section id="about" class="py-24 bg-slate-900/50 px-6 relative">
+        <div class="absolute inset-0 bg-grid opacity-20 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="flex items-center gap-2 mb-4 text-yellow-500 font-semibold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span>關於我</span>
+            </div>
+            <h2 class="text-4xl font-bold mb-8 text-white">鐵翼下的匠心：從藍天到數據的跨界實踐者</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-slate-400 leading-relaxed text-lg">
+                <p>
+                    我是<span class="text-white font-bold">鄔亞彬</span>。空軍的服役生涯給予了我「使命必達」的風骨與紀律，而<span class="text-yellow-500">國立屏東科技大學工業管理碩專班</span>的洗禮，則讓我學會如何用科學的角度優化系統、提升效能。
+                </p>
+                <p>
+                    我致力於將精準的工管思維帶入軟體開發與專案管理中。對我而言，每一行代碼就像飛行前的精密檢查，不容許一絲差錯。我追求的是不僅是「達成」，更是「卓越」。
+                </p>
+            </div>
+            
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 text-center hover:border-yellow-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2 group-hover:scale-110 transition-transform">10+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-500">服役/專案年數</div>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 text-center hover:border-yellow-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2 group-hover:scale-110 transition-transform">60+</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-500">成功任務紀錄</div>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 text-center hover:border-yellow-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2 group-hover:scale-110 transition-transform">100%</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-500">精準交付率</div>
+                </div>
+                <div class="p-6 bg-slate-900 rounded-2xl border border-slate-800 text-center hover:border-yellow-500/50 transition-all group">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2 group-hover:scale-110 transition-transform">Top</div>
+                    <div class="text-xs uppercase tracking-widest text-slate-500">工管管理專才</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技能核心 Section -->
+    <section id="skills" class="py-24 px-6 bg-slate-950">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 text-yellow-500 font-semibold mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    <span>核心戰力</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">精準戰術運用</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 技能 1 -->
+                <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 hover:border-yellow-500/30 transition-all group shadow-2xl">
+                    <div class="w-14 h-14 bg-yellow-500 text-slate-950 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform shadow-lg shadow-yellow-500/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-wide">全棧戰略開發</h3>
+                    <p class="text-slate-400 mb-8 leading-relaxed">具備從前端交互到後端架構的完整開發能力，擅長構建穩定、高效且可擴展的數位系統。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">REACT</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">NODE.JS</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">AWS</span>
+                    </div>
+                </div>
+                <!-- 技能 2 -->
+                <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 hover:border-yellow-500/30 transition-all group shadow-2xl">
+                    <div class="w-14 h-14 bg-yellow-500 text-slate-950 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform shadow-lg shadow-yellow-500/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M9 20v-10M6 20v-4M15 20v-8M18 20v-12"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-wide">工業管理優化</h3>
+                    <p class="text-slate-400 mb-8 leading-relaxed">運用屏科大碩專班所學之工管模型，進行流程改善與效率提升，將數據轉化為決策關鍵。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">OPTIMIZATION</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">STATISTICS</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">LEAN</span>
+                    </div>
+                </div>
+                <!-- 技能 3 -->
+                <div class="bg-slate-900/50 p-10 rounded-3xl border border-slate-800 hover:border-yellow-500/30 transition-all group shadow-2xl">
+                    <div class="w-14 h-14 bg-yellow-500 text-slate-950 rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform shadow-lg shadow-yellow-500/20">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-wide">專案戰略指揮</h3>
+                    <p class="text-slate-400 mb-8 leading-relaxed">結合軍中領導統御與敏捷開發模式，引領團隊在充滿挑戰的環境中準時交付成果。</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">SCRUM</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">MANAGEMENT</span>
+                        <span class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-xs font-bold border border-slate-700">TEAMWORK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 經歷 Section -->
+    <section id="experience" class="py-24 bg-slate-900/30 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-2 mb-4 text-yellow-500 font-semibold uppercase tracking-widest">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span>服役歷程 ‧ 職涯戰果</span>
+            </div>
+            <h2 class="text-4xl font-bold mb-16 text-white uppercase">MISSION RECORDS</h2>
+
+            <div class="space-y-16">
+                <!-- 經歷 1 -->
+                <div class="relative pl-10 border-l-2 border-slate-800 hover:border-yellow-500 transition-colors">
+                    <div class="absolute w-5 h-5 bg-slate-950 border-4 border-yellow-500 rounded-full -left-[11px] top-1 shadow-[0_0_15px_rgba(234,179,8,0.5)]"></div>
+                    <div class="text-sm font-bold text-yellow-500 mb-2 uppercase tracking-tighter">2022 - 至今</div>
+                    <h3 class="text-2xl font-bold text-white mb-2 uppercase">資深系統架構官 / 中華民國空軍</h3>
+                    <p class="text-slate-500 font-medium mb-4 italic uppercase">數位轉型小組 ‧ 戰略技術支援</p>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        主導空軍內部管理系統數位化升級計畫，成功降低 35% 作業繁複度。並運用屏科大碩班研究成果，優化後勤補給鏈數據模型。
+                    </p>
+                </div>
+                <!-- 經歷 2 -->
+                <div class="relative pl-10 border-l-2 border-slate-800 hover:border-yellow-500 transition-colors">
+                    <div class="absolute w-5 h-5 bg-slate-950 border-4 border-slate-700 rounded-full -left-[11px] top-1 group-hover:border-yellow-500"></div>
+                    <div class="text-sm font-bold text-slate-500 mb-2 uppercase tracking-tighter">2019 - 2022</div>
+                    <h3 class="text-2xl font-bold text-white mb-2 uppercase">工業管理碩專生 / 屏東科技大學</h3>
+                    <p class="text-slate-500 font-medium mb-4 italic uppercase">工業管理系 ‧ 專研效率優化</p>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        在校期間深入鑽研精實管理與自動化流程，將學術理論實踐於軍事專案中，獲得多項創新研發獎項。
+                    </p>
+                </div>
+                <!-- 經歷 3 -->
+                <div class="relative pl-10 border-l-2 border-slate-800 hover:border-yellow-500 transition-colors">
+                    <div class="absolute w-5 h-5 bg-slate-950 border-4 border-slate-700 rounded-full -left-[11px] top-1 group-hover:border-yellow-500"></div>
+                    <div class="text-sm font-bold text-slate-500 mb-2 uppercase tracking-tighter">2015 - 2019</div>
+                    <h3 class="text-2xl font-bold text-white mb-2 uppercase">技術研發工程師 / 科技創新集團</h3>
+                    <p class="text-slate-500 font-medium mb-4 italic uppercase">研發部 ‧ 核心開發成員</p>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        開發多項高併發系統架構，負責核心模組優化，為企業達成 200% 的用戶成長支撐。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡 Section -->
+    <section id="contact" class="py-24 px-6 bg-slate-950 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="grid md:grid-cols-2 gap-20">
+                <div>
+                    <h2 class="text-5xl font-bold mb-8 text-white uppercase leading-tight">準備好建立<br><span class="text-yellow-500">戰術通訊</span>了嗎？</h2>
+                    <p class="text-slate-400 text-xl mb-12">
+                        不論是技術諮詢、專案委託，或是學術交流，我隨時準備好進行下一個高價值的任務。
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-yellow-500 border border-slate-800 group-hover:border-yellow-500 transition-all shadow-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-500 uppercase tracking-widest">通訊地址</div>
+                                <div class="text-xl font-bold text-slate-200">contact@wuyabin.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center text-yellow-500 border border-slate-800 group-hover:border-yellow-500 transition-all shadow-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-slate-500 uppercase tracking-widest">基地位置</div>
+                                <div class="text-xl font-bold text-slate-200">台灣 ‧ 台北 / 屏東</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 mt-16">
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-slate-900 text-slate-400 hover:text-yellow-500 hover:bg-slate-800 border border-slate-800 rounded-full transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 flex items-center justify-center bg-slate-900 text-slate-400 hover:text-yellow-500 hover:bg-slate-800 border border-slate-800 rounded-full transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-10 rounded-3xl border border-slate-800 shadow-2xl relative">
+                    <div class="absolute -top-4 -right-4 bg-yellow-500 text-slate-950 px-4 py-1 text-xs font-black uppercase rounded-lg shadow-lg">Secure Link</div>
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('通訊已發送！(此為 Demo 演示)');">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">代號 / 姓名</label>
+                            <input type="text" class="w-full px-6 py-4 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-slate-700 transition-colors" placeholder="CALL SIGN">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">通訊頻率 (EMAIL)</label>
+                            <input type="email" class="w-full px-6 py-4 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-slate-700 transition-colors" placeholder="FREQUENCY@MAIL.COM">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">任務簡報 (MESSAGE)</label>
+                            <textarea rows="5" class="w-full px-6 py-4 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-yellow-500 text-white placeholder-slate-700 transition-colors" placeholder="BRIEFING..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-5 bg-yellow-500 text-slate-900 rounded-xl font-black uppercase tracking-widest hover:bg-yellow-400 transition-all shadow-xl shadow-yellow-500/10">發送加密通訊</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="py-16 bg-slate-950 text-slate-600 border-t border-slate-900">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-800 mb-8"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+            <p class="text-sm font-bold uppercase tracking-widest mb-2">© 2024 WU YA-BIN. MISSION ACCOMPLISHED.</p>
+            <p class="text-xs">國立屏東科技大學工業管理碩專班 | 中華民國空軍榮譽出品</p>
+        </div>
+    </footer>
+
+    <script>
+        // 導覽列滾動效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'shadow-2xl', 'py-3', 'border-b', 'border-slate-800');
+                navbar.classList.remove('py-5');
+            } else {
+                navbar.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'shadow-2xl', 'py-3', 'border-b', 'border-slate-800');
+                navbar.classList.add('py-5');
+            }
+        });
+
+        // 行動端選單切換
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 監聽滾動更新 Active Link (簡單實作)
+        window.addEventListener('scroll', () => {
+            const sections = ['home', 'about', 'skills', 'experience', 'contact'];
+            let current = 'home';
+            
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (window.scrollY >= element.offsetTop - 150) {
+                    current = section;
+                }
+            });
+
+            const desktopLinks = document.querySelectorAll('nav .hidden.md\\:flex a');
+            desktopLinks.forEach(link => {
+                link.classList.remove('text-yellow-500');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('text-yellow-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
