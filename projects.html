@@ -58,6 +58,23 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
+
+        /* 新增：年份大標題樣式 */
+        .year-heading-text {
+            font-size: 4.5rem;
+            font-weight: 900;
+            font-style: italic;
+            color: #e2e8f0; /* slate-200 */
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .year-heading-line {
+            height: 2px;
+            background-color: #f1f5f9; /* slate-100 */
+            flex-grow: 1;
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -102,7 +119,7 @@
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-500">重塑產業競爭力</span>
                     </h1>
                     <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                        深耕製造業與服務業多年，致力於 <span class="font-bold text-slate-800">ERP 建置</span>、<span class="font-bold text-slate-800">智慧巡檢</span> 與 <span class="font-bold text-slate-800">流程優化</span>。協助企業成功轉型。
+                        深耕製造業與服務業多年，致力於 <span class="font-bold text-slate-800">ERP 建置</span>、<span class="font-bold text-slate-800">智慧巡檢</span> 與 <span class="font-bold text-slate-800">流程優化</span>協助企業成功轉型。
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-5">
                         <a href="#projects" class="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition shadow-2xl shadow-slate-300 flex items-center justify-center gap-2">
@@ -218,7 +235,7 @@
         </div>
     </section>
 
-    <!-- 輔導專案歷程庫 -->
+    <!-- 專案歷程庫 -->
     <section id="projects" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -235,7 +252,8 @@
                 <button onclick="filterYear('113')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">113年</button>
                 <button onclick="filterYear('112')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">112年</button>
                 <button onclick="filterYear('111')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">111年</button>
-                <button onclick="filterYear('110')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">110年及以前</button>
+                <!-- 修改：110年及以前 改為 PREV -->
+                <button onclick="filterYear('110')" class="year-tab px-6 py-3 rounded-2xl border border-slate-200 text-sm font-bold transition-all">PREV</button>
             </div>
 
             <div id="projects-container" class="space-y-20">
@@ -303,8 +321,10 @@
                 year: "115",
                 categories: [
                     {
-                        name: "製造業輔導專案 (5案)",
+                        name: "製造業輔導專案 (7案)",
                         projects: [
+                            { client: "啟源國際有限公司", title: "進銷存資訊系統建置", status: "進行中" },
+                            { client: "尚贏科技有限公司", title: "精實數位資訊系統輔導", status: "進行中" },
                             { client: "百達醫企業有限公司", title: "開發保健食品業管理資訊系統", status: "進行中" },
                             { client: "寓意科技", title: "『Ragic ERP平台建置』-工程資源開發投入", status: "進行中" },
                             { client: "紡拓會", title: "建構紡織廠ERP並導入", status: "進行中" },
@@ -498,23 +518,23 @@
 
                     let projectsList = cat.projects.map(p => `
                         <div class="group p-6 rounded-2xl border border-slate-100 bg-slate-50/50 hover:bg-white hover:border-blue-200 hover:shadow-xl transition-all duration-300">
-                            <div class="flex flex-col gap-3">
-                                <div class="flex justify-between items-start gap-4">
-                                    <h4 class="font-black text-slate-800 group-hover:text-blue-700 transition-colors">${p.client}</h4>
+                            <div class="flex flex-col gap-2">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-lg font-black text-slate-900 leading-snug group-hover:text-blue-700 transition-colors">${p.client}</h4>
                                     ${p.status ? `<span class="status-tag ${p.status === '進行中' ? 'status-ongoing' : 'status-completed'}">${p.status}</span>` : ''}
                                 </div>
-                                <p class="text-sm text-slate-500 leading-relaxed font-medium">${p.title}</p>
+                                <p class="text-sm font-medium text-slate-500 leading-relaxed">${p.title}</p>
                             </div>
                         </div>
                     `).join('');
 
                     categoriesHtml += `
-                        <div class="mb-12 last:mb-0">
-                            <div class="flex items-center gap-3 mb-6">
-                                <div class="w-10 h-10 ${bgColor} ${color} rounded-xl flex items-center justify-center">
-                                    <i data-lucide="${icon}" class="w-5 h-5"></i>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="w-12 h-12 ${bgColor} ${color} rounded-2xl flex items-center justify-center shadow-inner">
+                                    <i data-lucide="${icon}" class="w-6 h-6"></i>
                                 </div>
-                                <h3 class="text-xl font-black text-slate-700 tracking-tight">${cat.name}</h3>
+                                <h3 class="text-2xl font-black text-slate-800">${cat.name}</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 ${projectsList}
@@ -523,50 +543,48 @@
                     `;
                 });
 
+                // 修改：年份大標題樣式調整為截圖樣式 (115Y / PREV)
+                const displayYear = yearGroup.year === "110" ? "PREV" : `${yearGroup.year}Y`;
+
                 yearSection.innerHTML = `
                     <div class="relative">
-                        <div class="flex items-baseline gap-6 mb-10">
-                            <h2 class="text-6xl font-black text-slate-200 italic tracking-tighter">${yearGroup.year === '110' ? 'PREV' : yearGroup.year + 'Y'}</h2>
-                            <div class="h-1 bg-slate-100 flex-grow rounded-full"></div>
+                        <div class="space-y-16">
+                            <div class="flex items-center">
+                                <span class="year-heading-text">${displayYear}</span>
+                                <div class="year-heading-line"></div>
+                            </div>
+                            ${categoriesHtml}
                         </div>
-                        ${categoriesHtml}
                     </div>
                 `;
-                
                 container.appendChild(yearSection);
-                setTimeout(() => {
-                    yearSection.classList.remove('opacity-0', 'translate-y-4');
-                    lucide.createIcons();
-                }, 100);
             });
+
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                document.querySelectorAll('.year-section').forEach(el => {
+                    el.classList.remove('opacity-0', 'translate-y-4');
+                });
+            }, 50);
         }
 
         function filterYear(year) {
             document.querySelectorAll('.year-tab').forEach(tab => {
                 tab.classList.remove('active');
-                if (tab.innerText.includes(year) || (year === 'all' && tab.innerText === '全部年份')) {
+                // 修改：判斷邏輯也需包含新的 PREV 字樣
+                if ((year === 'all' && tab.textContent === '全部年份') || 
+                    (tab.textContent.includes(year)) ||
+                    (year === '110' && tab.textContent === 'PREV')) {
                     tab.classList.add('active');
                 }
             });
             renderProjects(year);
         }
 
-        document.getElementById('consultation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('user-name').value;
-            const org = document.getElementById('user-org').value;
-            const email = document.getElementById('user-email').value;
-            const msg = document.getElementById('user-msg').value;
-
-            const recipient = "cpho@mail.npust.edu.tw";
-            const subject = `產學合作諮詢 - ${name} (${org})`;
-            const body = `您好，我想諮詢產學合作相關事宜：\n\n` +
-                         `姓名：${name}\n組織：${org}\nEmail：${email}\n需求內容：\n${msg}\n\n--- 來自專頁表單 ---`;
-
-            window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        });
-
-        window.onload = () => renderProjects();
+        window.onload = () => {
+            renderProjects();
+        };
     </script>
 </body>
 </html>
