@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#2d211b" />
+<title>紅樓新夢・第五回｜林憐玉仗義護花魂　花襲人含悲識己心</title>
+<style>
+:root{
+  --ink:#29211d; --paper:#f3eadb; --paper2:#e9dcc8; --cinnabar:#7d2a24;
+  --cinnabar2:#9f4436; --gold:#b98a4a; --jade:#50675f; --night:#1d1714;
+  --muted:#7d6f62; --line:rgba(104,74,48,.22); --shadow:0 18px 50px rgba(28,18,12,.18);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:
+  radial-gradient(circle at 15% 15%,rgba(155,111,65,.10),transparent 28%),
+  radial-gradient(circle at 80% 35%,rgba(115,56,45,.08),transparent 26%),
+  linear-gradient(180deg,#efe5d4,#f6efe3 45%,#eadfce);font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;line-height:1.95}
+a{color:inherit;text-decoration:none}
+.progress{position:fixed;z-index:99;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--cinnabar),var(--gold));width:0}
+.topbar{position:fixed;z-index:90;top:0;left:0;right:0;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(180deg,rgba(25,18,15,.90),rgba(25,18,15,.35),transparent);color:#f8efe3;backdrop-filter:blur(3px)}
+.brand{font-weight:700;letter-spacing:.18em}.nav{display:flex;gap:20px;font-family:"Noto Sans TC",sans-serif;font-size:14px}.nav a{opacity:.82}.nav a:hover{opacity:1;color:#e8bf7d}
+.hero{min-height:100vh;position:relative;display:grid;place-items:center;overflow:hidden;background:
+ linear-gradient(180deg,rgba(19,14,12,.15),rgba(19,14,12,.76)),
+ url('assets/slide1.png') center/cover no-repeat}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:26vh;background:linear-gradient(transparent,#241915)}
+.hero-inner{position:relative;z-index:2;width:min(1080px,90vw);text-align:center;color:#f8efe3;padding:120px 20px 150px}
+.kicker{font-family:"Noto Sans TC",sans-serif;letter-spacing:.35em;color:#deb97d;font-size:15px}.hero h1{font-size:clamp(38px,6vw,84px);line-height:1.25;margin:24px 0 10px;text-shadow:0 10px 34px rgba(0,0,0,.45)}
+.hero h2{font-size:clamp(20px,2.5vw,34px);font-weight:400;color:#e8d5bb;margin:0}.byline{margin-top:30px;color:#d8c6ad}.scroll{margin-top:60px;display:inline-block;border:1px solid rgba(255,255,255,.28);padding:10px 18px;border-radius:999px;font-family:"Noto Sans TC",sans-serif;font-size:13px;letter-spacing:.1em}
+main{position:relative}.section{width:min(1040px,92vw);margin:0 auto;padding:90px 0}.section.narrow{width:min(780px,88vw)}
+.ornament{text-align:center;color:var(--cinnabar);letter-spacing:.8em;margin-bottom:30px}.eyebrow{font-family:"Noto Sans TC",sans-serif;color:var(--cinnabar);font-size:13px;letter-spacing:.22em;font-weight:700}.section h3{font-size:clamp(28px,4vw,48px);line-height:1.35;margin:8px 0 16px}.lead{font-size:20px;color:#5e5148}.intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:stretch}.card{background:rgba(255,252,246,.68);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:30px;backdrop-filter:blur(4px)}
+.quote-card{display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6f2923,#30201c);color:#f6ede0;min-height:320px}.quote-card blockquote{font-size:30px;line-height:1.6;margin:0}.quote-card small{display:block;margin-top:18px;color:#d8b47d;font-size:14px}
+.video-wrap{background:#1d1714;border:1px solid rgba(196,153,93,.35);border-radius:24px;overflow:hidden;box-shadow:0 24px 70px rgba(30,18,10,.28)}video{display:block;width:100%;aspect-ratio:16/9;background:#000}.video-caption{padding:18px 22px;color:#eadbc7;font-family:"Noto Sans TC",sans-serif;font-size:14px;display:flex;justify-content:space-between;gap:16px}.video-caption span:last-child{color:#ba996d}
+.article-shell{position:relative;background:rgba(255,252,246,.78);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:clamp(28px,6vw,72px)}.article-shell:before,.article-shell:after{content:"";position:absolute;width:74px;height:74px;border-color:var(--gold);opacity:.6}.article-shell:before{top:16px;left:16px;border-top:2px solid;border-left:2px solid}.article-shell:after{right:16px;bottom:16px;border-right:2px solid;border-bottom:2px solid}
+.story p{margin:0 0 1.25em;font-size:18px}.story .drop:first-letter{float:left;font-size:64px;line-height:.9;padding:8px 10px 0 0;color:var(--cinnabar);font-weight:700}.story .dialogue{color:#342a25}.pullquote{margin:46px 0;padding:36px 28px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);text-align:center;color:var(--cinnabar);font-size:clamp(26px,4vw,40px);font-weight:700;line-height:1.6;background:linear-gradient(90deg,transparent,rgba(185,138,74,.06),transparent)}
+.chapter-break{margin:58px 0;text-align:center;color:#9c7a53;letter-spacing:.8em}.dark-band{background:linear-gradient(180deg,#2c201b,#1b1513);color:#efe5d6;margin:40px 0}.dark-band .section{padding:100px 0}.dark-band h3{color:#f5e7d3}.dark-band .lead{color:#cdbda9}
+.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.theme-item{padding:24px;border-top:3px solid var(--cinnabar);background:rgba(255,250,242,.72);border-radius:12px}.theme-item b{display:block;margin-bottom:8px;color:var(--cinnabar)}
+.quiz{background:#2a1d19;color:#f1e5d5;border-radius:28px;padding:clamp(24px,5vw,54px);box-shadow:var(--shadow)}.quiz h3{color:#fff}.question{padding:24px 0;border-top:1px solid rgba(255,255,255,.12)}.question:first-of-type{border-top:0}.question h4{font-size:18px;line-height:1.55;margin:0 0 14px}.option{display:block;margin:10px 0;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;cursor:pointer;background:rgba(255,255,255,.03);font-family:"Noto Sans TC",sans-serif;font-size:14px}.option:hover{background:rgba(255,255,255,.08)}.option input{margin-right:8px}.quiz-actions{display:flex;gap:12px;align-items:center;margin-top:24px}.btn{border:0;border-radius:999px;padding:12px 22px;background:var(--cinnabar2);color:white;cursor:pointer;font-weight:700}.btn.secondary{background:transparent;border:1px solid rgba(255,255,255,.25)}#score{font-family:"Noto Sans TC",sans-serif;color:#e7c58d}.explain{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;background:rgba(213,178,119,.10);color:#dbc9b2;font-size:14px}.explain.show{display:block}.correct{border-color:#c8a56a;background:rgba(200,165,106,.12)}
+.closing{background:linear-gradient(180deg,#ece0ce,#d9c7ae);padding-bottom:120px}.closing .section{padding-top:90px}.final-line{text-align:center;font-size:clamp(30px,5vw,58px);line-height:1.5;color:var(--cinnabar);margin:80px auto 26px;width:min(900px,90vw)}.author{text-align:center;color:#665548;font-size:17px}
+footer{background:#1d1512;color:#bda994;padding:32px;text-align:center;font-family:"Noto Sans TC",sans-serif;font-size:13px}
+@media(max-width:800px){.nav{display:none}.intro-grid,.theme-grid{grid-template-columns:1fr}.section{padding:60px 0}.story p{font-size:17px}.hero-inner{padding-top:130px}.article-shell{border-radius:18px}.video-caption{flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="topbar"><div class="brand">紅樓新夢</div><nav class="nav"><a href="#video">影片</a><a href="#story">正文</a><a href="#themes">主題</a><a href="#quiz">測驗</a><a href="#closing-video">尾聲影片</a></nav></header>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">紅樓新夢・第五回</div>
+    <h1>林憐玉仗義護花魂</h1>
+    <h2>花襲人含悲識己心</h2>
+    <div class="byline">作者・林恆毅</div>
+    <a class="scroll" href="#video">入榮國府・展卷</a>
+  </div>
+</section>
+
+<main>
+<section class="section" id="video">
+  <div class="eyebrow">VIDEO・章回導讀</div>
+  <h3>一句「妳願意嗎？」<br>如何逆轉丫鬟的命運</h3>
+  <p class="lead">先以影片走進榮國府的繁華與牢籠，再進入林憐玉與花襲人真正的選擇。</p>
+  <div class="video-wrap">
+    <video controls preload="metadata" poster="assets/slide1.png"><source src="assets/main-video.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video>
+    <div class="video-caption"><span>紅樓新夢・第五回｜影片導讀</span><span>16:9</span></div>
+  </div>
+</section>
+
+<section class="section intro-grid">
+  <div class="card">
+    <div class="eyebrow">STORY・榮國府</div>
+    <h3>外人見繁華，<br>他只見牢籠。</h3>
+    <p class="lead">朱門、繡戶、繁花與規矩交織成榮國府。真正困住人的，不是高牆，而是連一句「願不願意」都不能自己回答。</p>
+  </div>
+  <div class="card quote-card"><blockquote>「我問她叫什麼，<br>不曾問她屬於誰。」<small>—— 林憐玉</small></blockquote></div>
+</section>
+
+<section class="section narrow" id="story">
+<div class="article-shell story">
+  <div class="ornament">◆　◆　◆</div>
+  <p class="drop">話說榮國府中，繁華如錦。</p>
+  <p>外人看來，朱門繡戶，公子多情，丫鬟嬌俏，處處都是富貴風流。</p>
+  <p>林憐玉第一次踏進這座府邸時，卻只說了四個字：</p>
+  <div class="pullquote">「好大牢籠。」</div>
+  <p>旁人只當他狂。</p>
+  <p>唯有他自己知道，這滿園春色之下，一個人的尊卑、去留、婚嫁，甚至一句「願不願意」，往往都由不得自己。</p>
+  <p>他本不想管。</p>
+  <p>天下不平事太多。</p>
+  <p>若每一件都拔劍，他的劍早已斷了千百回。</p>
+  <p>直到他看見襲人。</p>
+  <p>那日簾影低垂，襲人抱著一疊衣裳自廊下走來。</p>
+  <p>她並不似黛玉那般清絕，也沒有寶釵那種令人一眼難忘的端凝。她只是安安靜靜地走著，見人便讓半步，有人喚她，她便溫聲答應。</p>
+  <p>林憐玉只看了一眼。</p><p>第二眼便移不開了。</p>
+  <p>他平生自負看人極準。</p>
+  <p>那姑娘眉眼間有一種奇怪的溫柔。</p>
+  <p>不是不懂世事。</p><p>恰恰是因為懂得太多，所以處處替別人留著餘地。</p>
+  <p>林憐玉忽然問身旁人：</p>
+  <p class="dialogue">「她是誰？」</p><p>「寶二爺房裡的襲人。」</p><p>「房裡的？」</p><p>「自然是服侍寶二爺的。」</p>
+  <p>林憐玉眉頭微微一皺。</p>
+  <div class="pullquote">「我問她叫什麼，不曾問她屬於誰。」</div>
+  <p>那人怔住。</p><p>林憐玉卻已向前走去。</p>
+
+  <div class="chapter-break">◇　夜　◇</div>
+  <p>入夜後，他原本不該再見襲人。</p><p>偏偏世上的事，最怕一個「偏偏」。</p>
+  <p>林憐玉經過寶玉住處附近時，忽然聽見屋裡傳來極輕的一聲：</p><p class="dialogue">「二爺……不要。」</p>
+  <p>聲音不大。</p><p>甚至還帶著平日那種溫順。</p><p>可林憐玉停住了。</p>
+  <p>他沒有立刻闖進去。</p><p>因為他知道自己可能聽錯。</p><p>於是他站在門外，又等了一瞬。</p>
+  <p>接著是寶玉的聲音。</p><p>帶著幾分不耐，也帶著一種理所當然。</p><p>林憐玉的眼神變了。</p>
+  <p>下一刻，門開了。</p><p>不是被踢開。</p><p>林憐玉甚至還有閒情把門推得十分平穩。</p>
+  <p>他走進去。</p><p>寶玉驚道：「你來做什麼？」</p><p>林憐玉沒看他。</p><p>他先看襲人。</p>
+  <p>襲人臉色發白，退在一旁。見外人進來，第一個反應竟不是求救，而是低頭整理自己的衣襟。</p>
+  <p>林憐玉心頭那根弦，斷了。</p><p>但他仍然沒有拔劍。</p><p>他只問：</p>
+  <div class="pullquote">「襲人姑娘。<br>妳願意嗎？」</div>
+  <p>滿屋寂靜。</p><p>襲人怔住了。</p><p>她彷彿從來沒有想過，這件事竟然可以有人問她。</p>
+  <p>寶玉先惱了。</p><p>「她是我房裡的人！」</p><p>林憐玉終於轉頭看他。</p><p>「所以呢？」</p>
+  <p>寶玉一時語塞。</p><p>「她服侍我，自然——」</p><p>「自然什麼？」</p>
+  <p>林憐玉聲音仍然很輕。</p><p>「自然連她願不願意，都由你替她說？」</p>
+  <p>寶玉漲紅了臉。</p><p>「我們之間的事，與你何干？」</p>
+  <p>林憐玉笑了。</p><p>那笑意卻沒有半分溫度。</p><p>「方才確實與我無干。」</p><p>「現在有了。」</p>
+  <p>寶玉道：「憑什麼？」</p><p>林憐玉伸出一隻手。</p><p>沒有碰襲人，只向她攤開掌心。</p>
+  <p>「憑她若想走，我今日帶她走。」</p>
+  <p>寶玉大怒，上前便要阻攔。</p><p>直到這時，林憐玉才動。</p>
+  <p>沒有人看清他究竟怎樣出的手。</p><p>只聽「啪」的一聲，寶玉伸出的手已被按在桌面上。</p>
+  <p>林憐玉另一隻手仍負在身後。</p><p>甚至連腰間長劍都沒有出鞘。</p>
+  <p>「賈寶玉。」</p><p>這是他第一次連名帶姓叫他。</p><p>「你最好不要逼我拔劍。」</p>
+  <p>寶玉疼得臉色發白，卻仍咬牙道：「你為一個丫鬟——」</p><p>話沒說完。</p>
+  <p>林憐玉的眼神驟然冷了。</p><p>「丫鬟？」</p>
+  <div class="pullquote">「所以她便不是人？」</div>
+  <p>這一次，連寶玉都不敢接話。</p>
+
+  <div class="chapter-break">◇　風波　◇</div>
+  <p>事情很快驚動了賈府。</p>
+  <p>先是有人說林憐玉目無尊卑。</p><p>接著又有人說他與襲人早有私情，否則何至於為一個丫鬟如此大動干戈。</p><p>再後來，連「敗壞門風」四個字都搬了出來。</p>
+  <p>林憐玉聽完，只笑了一聲。</p><p>他早料到了。</p>
+  <p>第一步用主僕尊卑壓他。</p><p>第二步毀襲人的名節。</p><p>第三步逼襲人自己改口。</p><p>一環扣一環。</p>
+  <p>若換別人，此時早已慌了。</p><p>偏偏他叫林憐玉。</p>
+  <p>眾人都等著他自證清白。</p><p>他卻問了一句：</p><p>「諸位是不是弄錯了？」</p><p>「今日該自證的，何時輪到我與襲人姑娘？」</p>
+  <p>眾人一愣。</p><p>林憐玉轉向寶玉。</p>
+  <p>「該說清楚的，是寶二爺。」</p><p>「她既真心願意，你何必怕我問她？」</p>
+  <p>寶玉面色驟變。</p><p>林憐玉又道：</p><p>「今日我只問一件事。」</p>
+  <p>他看向襲人。</p><p>「姑娘。」</p><p>「妳若說是我多管閒事，我現在就走。」</p>
+  <p>所有人的目光頓時落到襲人身上。</p><p>襲人臉色愈發蒼白。</p>
+  <p>這一刻，她才真正害怕。</p>
+  <p>因為林憐玉可以替她擋寶玉。</p><p>卻沒有人能替她回答這一句。</p>
+  <p>她若說「願意」，一切都可以恢復原狀。</p><p>她仍是人人眼裡懂事的襲人。</p>
+  <p>若說「不願」……</p><p>她甚至不知道明日自己還能不能留在這座府裡。</p>
+  <p>林憐玉忽然開口：</p><p>「別怕。」</p>
+  <p>襲人抬頭看他。</p><p>他沒有催她。</p><p>也沒有暗示她應該怎麼回答。</p>
+  <p>只是說：</p><div class="pullquote">「說妳自己的話。」</div>
+  <p>襲人的眼淚忽然落了下來。</p><p>她低聲道：</p>
+  <div class="pullquote">「我不願。」</div>
+  <p>三個字。</p><p>很輕。</p><p>林憐玉卻覺得，這大概是他此生聽過最重的一句話。</p>
+
+  <div class="chapter-break">◇　三日後　◇</div>
+  <p>那天之後，林憐玉果然成了許多人的眼中釘。</p><p>寶玉恨他。</p><p>有人防他。</p><p>也有人暗中笑他，說他智名滿天下，到頭來竟為一個丫鬟壞了自己與賈府的交情。</p>
+  <p>林憐玉聽見，只問：</p><p>「交情值幾兩？」</p><p>沒人答得出來。</p>
+  <p>他自己卻知道，他確實付出了代價。</p><p>從出手那一刻起，他便不能再假裝自己只是賈府的客人。</p><p>他選了邊。</p>
+  <p>然而襲人一直沒有來找他。</p><p>直到三日後。</p>
+  <p>那晚月色很好。</p><p>林憐玉正在院中擦劍。</p><p>身後忽然傳來腳步。</p>
+  <p>他沒有回頭。</p><p>「襲人姑娘。」</p>
+  <p>襲人吃了一驚。</p><p>「公子怎知是我？」</p><p>「妳走路比旁人輕。」</p>
+  <p>襲人沉默片刻，道：</p><p>「那日……多謝公子。」</p>
+  <p>林憐玉仍擦著劍。</p><p>「不必。」</p><p>「可是公子為我得罪了許多人。」</p><p>「那是我的事。」</p><p>「若不是我——」</p>
+  <p>林憐玉終於抬起頭。</p><p>「襲人。」</p>
+  <p>這是他第一次沒有叫她「姑娘」。</p><p>襲人的心莫名一跳。</p>
+  <p>林憐玉卻只是認真看著她。</p><p>「妳記住一件事。」</p>
+  <div class="pullquote">「我那日出手，不是買妳。<br>妳不用拿任何東西還我。<br>更不用拿自己還。」</div>
+  <p>襲人怔住。</p><p>襲人眼眶慢慢紅了。</p>
+  <p>她在賈府多年，聽過太多人告訴她應該做什麼。</p><p>應該忠心。</p><p>應該懂事。</p><p>應該服侍好寶二爺。</p><p>應該替自己的將來盤算。</p>
+  <p>唯獨眼前這個第一次見面便為她翻了整座賈府規矩的男人，告訴她：</p><p>妳什麼都不用還。</p>
+  <p>襲人低下頭。</p><p>「公子為什麼待我這樣好？」</p>
+  <p>這一次，輪到林憐玉沉默。</p>
+  <p>他智絕古今。</p><p>別人一句話出口，他常常連後面十句都猜得到。</p><p>可面對襲人，他第一次覺得有些事情不該算。</p>
+  <p>半晌，他笑道：</p><p>「現在不能告訴妳。」</p><p>「為什麼？」</p><p>「怕妳把感激錯認成別的。」</p>
+  <p>襲人怔怔看他。</p><p>林憐玉重新低頭擦劍。</p><p>「等哪一天，妳不欠我了。」</p><p>「我再告訴妳。」</p>
+
+  <div class="chapter-break">◇　收劍　◇</div>
+  <p>後來襲人才知道，林憐玉也會失控。</p>
+  <p>有人拿那夜之事羞辱她時，林憐玉原本只是坐著喝茶。</p><p>第一句，他沒有動。</p><p>第二句，他放下茶杯。</p><p>第三句出口時，他腰間的劍已出了半寸。</p>
+  <p>滿屋子的人瞬間噤聲。</p><p>那一刻的林憐玉，哪裡還有平日半分從容？</p>
+  <p>襲人忽然明白：</p><p>這個男人什麼都算得清。</p><p>唯獨她受委屈的時候，他算不清。</p>
+  <p>林憐玉起身。</p><p>殺氣逼人。</p><p>沒人敢攔。</p>
+  <p>直到一隻柔軟的手，輕輕扯住他的衣袖。</p><p>「林公子。」</p><p>林憐玉停住。</p><p>「夠了。」</p>
+  <p>他閉了閉眼。</p><p>片刻之後，那柄已出鞘半寸的劍，被他一寸一寸推了回去。</p>
+  <p>滿屋人看得目瞪口呆。</p><p>襲人自己也怔住了。</p>
+  <p>原來那個連賈府都壓不住的男人……</p><p>她一句話，就能讓他收劍。</p>
+  <p>林憐玉回頭看她。</p><p>襲人眼中仍有淚。</p><p>他忽然低聲道：</p><p>「好。」</p>
+  <p>只有一個字。</p><p>襲人卻在那一刻第一次明白，自己心裡某個地方已經不同了。</p>
+  <p>從前，是他護她。</p><p>如今，她也能拉住他。</p>
+  <p>她不再只是等待別人安排命運的丫鬟。</p><p>總有一天，她會自己決定留下還是離開。</p><p>也會自己決定——</p><p>這一生的千般溫柔，究竟要給誰。</p>
+  <p>而那時的賈寶玉還不知道，他真正的報應已經開始。</p>
+  <p>因為最殘酷的報應從來不是挨一頓打。</p>
+  <p>而是有一天，他會親眼看見那個曾經溫柔服侍自己的女子，在終於能夠自由選擇之後——沒有選他。</p>
+  <div class="pullquote">溫柔從來不是奴性，只看有無錯付。</div>
+  <div class="ornament">◆　◆　◆</div>
+</div>
+</section>
+
+<section class="dark-band" id="themes"><div class="section">
+  <div class="eyebrow" style="color:#d7ad70">THEMES・章回意旨</div>
+  <h3>這一回，真正被改變的不是歸屬，<br>而是「選擇」本身。</h3>
+  <p class="lead">從「她是誰」到「她願不願意」，故事把視線從主僕名分，轉回一個人的意志。</p>
+  <div class="theme-grid">
+    <div class="theme-item"><b>看見</b>不以「誰房裡的人」定義襲人，而是先問她是誰。</div>
+    <div class="theme-item"><b>尊重</b>救她不是取得她，保護不是另一種佔有。</div>
+    <div class="theme-item"><b>選擇</b>「我不願」不是結束，而是她第一次替自己說話。</div>
+  </div>
+</div></section>
+
+<section class="section" id="quiz">
+  <div class="quiz">
+    <div class="eyebrow" style="color:#d7ad70">QUIZ・閱讀理解</div>
+    <h3>讀完第五回，你看見了什麼？</h3>
+    <p style="color:#cdbba5">共 5 題。作答後可立即查看分數與解析。</p>
+    <form id="quizForm"></form>
+    <div class="quiz-actions"><button type="button" class="btn" id="gradeBtn">查看結果</button><button type="button" class="btn secondary" id="resetBtn">重新作答</button><span id="score"></span></div>
+  </div>
+</section>
+
+<section class="closing" id="closing-video">
+  <div class="section">
+    <div class="eyebrow">EPILOGUE VIDEO・章回尾聲</div>
+    <h3>不是救贖，是把選擇還給她。</h3>
+    <p class="lead">第二支影片以本回關鍵句構成 25 秒意象短片，作為整篇閱讀後的收束。</p>
+    <div class="video-wrap"><video controls preload="metadata" poster="assets/slide6.png"><source src="assets/closing-video.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><div class="video-caption"><span>紅樓新夢・第五回｜意象尾聲</span><span>25 秒・16:9</span></div></div>
+  </div>
+  <div class="final-line">「從前，是他護她。<br>如今，她也能拉住他。」</div>
+  <div class="author">《紅樓新夢・第五回》　作者：林恆毅</div>
+</section>
+</main>
+<footer>紅樓新夢・第五回｜林憐玉仗義護花魂　花襲人含悲識己心　© 林恆毅</footer>
+<script>
+const qs=[
+{q:'林憐玉第一次踏進榮國府邸時，對這座朱門繡戶的府邸下了什麼評語？',o:['繁華如錦','好大牢籠','朱門繡戶','滿園春色'],a:1,e:'文本中林憐玉只說了四個字：「好大牢籠。」'},
+{q:'林憐玉在門外聽到屋裡傳來襲人的聲音後，走進房裡問了襲人哪一句關鍵問題？',o:['妳要跟我走嗎？','寶二爺欺負妳了嗎？','襲人姑娘，妳願意嗎？','妳為何不求救？'],a:2,e:'他沒有先質問寶玉，而是先看襲人並問：「襲人姑娘。妳願意嗎？」'},
+{q:'面對眾人的注視，襲人在林憐玉鼓勵「說妳自己的話」後，最後說出了哪三個字？',o:['我願意','我不願','不知道','求公子'],a:1,e:'襲人落下眼淚，低聲說出「我不願」。'},
+{q:'三日後，林憐玉用哪一句話表明自己出手不是為了索取襲人的回報？',o:['妳若留在賈府，遲早會後悔。','我那日出手，不是買妳。妳不用拿任何東西還我，更不用拿自己還。','只要妳願意跟我走，天下大可去得。','賈寶玉不配擁有妳的溫柔。'],a:1,e:'他明確切斷「救助＝佔有」的關係，將選擇權留給襲人。'},
+{q:'有人羞辱襲人時，最終是什麼讓林憐玉把已出鞘半寸的劍推回去？',o:['賈府長輩趕到','襲人扯住他的衣袖說：「林公子，夠了。」','賈寶玉賠禮','林憐玉想起客人身分'],a:1,e:'襲人的一句「夠了」讓他收劍，象徵兩人的關係不再只是單向保護。'}
+];
+const form=document.getElementById('quizForm');
+qs.forEach((x,i)=>{const d=document.createElement('div');d.className='question';d.innerHTML=`<h4>${i+1}. ${x.q}</h4>`+x.o.map((o,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${o}</label>`).join('')+`<div class="explain" id="e${i}"></div>`;form.appendChild(d)});
+document.getElementById('gradeBtn').onclick=()=>{let s=0;qs.forEach((x,i)=>{const v=form.querySelector(`input[name=q${i}]:checked`);const ex=document.getElementById(`e${i}`);ex.classList.add('show');if(v&&Number(v.value)===x.a){s++;ex.textContent='✓ 正確。'+x.e}else{ex.textContent='解析：'+x.e}form.querySelectorAll(`input[name=q${i}]`).forEach(inp=>{if(Number(inp.value)===x.a)inp.closest('.option').classList.add('correct')})});document.getElementById('score').textContent=`得分：${s} / ${qs.length}`};
+document.getElementById('resetBtn').onclick=()=>{form.reset();document.getElementById('score').textContent='';document.querySelectorAll('.explain').forEach(x=>x.classList.remove('show'));document.querySelectorAll('.option').forEach(x=>x.classList.remove('correct'))};
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById('progress').style.width=(scrollY/h*100)+'%'});
+</script>
+</body>
+</html>
